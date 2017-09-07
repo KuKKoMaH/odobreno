@@ -21,16 +21,28 @@ $baseClass = '.advantages'
       {$baseClass}__content
         margin-left: 0
 
+    @media (max-width: $breakpoint-sm - 1)
+      margin-bottom: 40px
 
   &__image
     width: 50%
     float: left
     text-align: center
 
+    @media (max-width: $breakpoint-sm - 1)
+      width: 100%
+      float: none
+      padding: 0 10px
+
   &__content
     width: 50%
     margin-left: 50%
     padding-right: 20px
+
+    @media (max-width: $breakpoint-sm - 1)
+      width: 100%
+      margin: 0
+      padding: 0 10px
 
   &__name
     font-size: 24px
@@ -58,3 +70,6 @@ $baseClass = '.advantages'
 
     &:hover
       border: 1px solid #4476B0
+
+    @media (max-width: $breakpoint-sm - 1)
+      margin-top: 0px

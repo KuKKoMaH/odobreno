@@ -3,7 +3,8 @@ var webpack = require('webpack');
 var notify = require('gulp-notify');
 
 var server = require('./server');
-var webpackConfig = require('../assets/webpack.config');
+var config = require('../config');
+var webpackConfig = require('../assets/webpack.config').createConfig;
 
 function handler(err, stats, cb) {
   var errors = stats.compilation.errors;

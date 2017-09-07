@@ -7,7 +7,7 @@ function build (cb) {
     'clean',
     'css',
     'html',
-    // 'js',
+    'js',
     // 'copy',
     cb
   );

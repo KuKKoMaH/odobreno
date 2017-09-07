@@ -1,3 +1,4 @@
+const path = require('path');
 const webpack = require('webpack');
 
 function createConfig(env) {
@@ -10,13 +11,10 @@ function createConfig(env) {
   isProduction = env === 'production';
 
   webpackConfig = {
-    context: path.join(__dirname, config.src.js),
-    entry:   {
-      app: './app.js'
-    },
+    entry:   './src/app.js',
     output:  {
-      path:       path.join(__dirname, config.dest.js),
-      filename:   '[name].js',
+      path:       path.join(__dirname, '../../build/js'),
+      filename:   'app.js',
       publicPath: 'js/'
     },
     devtool: isProduction ? '#source-map' : '#cheap-module-eval-source-map',
@@ -47,12 +45,6 @@ function createConfig(env) {
         'window.jQuery': 'jquery'
       }),
       new webpack.NoEmitOnErrorsPlugin(),
-
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'static',
-        analyzerPort: 4000,
-        openAnalyzer: false
-      })
     ],
   };
 

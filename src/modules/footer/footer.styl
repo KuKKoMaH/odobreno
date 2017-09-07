@@ -1,5 +1,9 @@
 .footer
   padding-bottom: 50px
+
+  @media (max-width: $breakpoint-sm - 1)
+    text-align: center
+
   &--line .w
     padding-top: 25px
     border-top: 1px solid #C2D7E5
@@ -24,6 +28,9 @@
   &__icons
     padding-top: 10px
     text-align: right
+
+    @media (max-width: $breakpoint-sm - 1)
+      text-align: center
 
   &__icon
     display: inline-block

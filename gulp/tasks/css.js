@@ -4,7 +4,7 @@ var decl = require('postcss').decl;
 var sourcemaps = require('gulp-sourcemaps');
 var stylus = require('gulp-stylus');
 var postcss = require('gulp-postcss');
-var mqpacker = require("css-mqpacker");
+var mqpacker = require('css-mqpacker');
 var cssnano = require('cssnano');
 var cssnext = require('postcss-cssnext');
 var gulpif = require('gulp-if');
@@ -12,6 +12,7 @@ var sprites = require('postcss-sprites');
 var updateRule = require('postcss-sprites/lib/core').updateRule;
 var copy = require('postcss-copy');
 var watch = require('gulp-watch');
+var atImport = require('postcss-import');
 
 var config = require('../config');
 
@@ -29,6 +30,7 @@ gulp.task('css', function () {
     .pipe(stylus({ define: { url: stylus.stylus.resolver() } }))
     .on('error', require('../assets/errorHandler'))
     .pipe(postcss([
+      atImport(),
       sprites({
         stylesheetPath: 'build',
         spritePath:     'build/img',
@@ -39,7 +41,7 @@ gulp.task('css', function () {
             } else {
               reject();
             }
-          })
+          });
         },
         hooks:          {
           onUpdateRule: function (rule, token, image) {

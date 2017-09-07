@@ -16,7 +16,7 @@ function saveAsset(src) {
   ) return Promise.resolve(src);
 
   var srcPath = path.resolve('src', src);
-console.log(src, srcPath);
+
   return new Promise(function (res) {
     fs.stat(srcPath, function (err, stats) {
       if (err || !stats.isFile()) return res(src);

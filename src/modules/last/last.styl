@@ -2,15 +2,29 @@
   padding: 72px 0 90px
   position: relative
   background: #F0F5F8
-  
+  overflow: hidden
+
+  @media (max-width: $breakpoint-md - 1)
+    .w
+      padding-left: 10px
+      padding-right: 10px
+
   &__header
     font-size: 22px
     padding-top: 20px
     color: #227eba
     text-transform: uppercase
+    float: left
+
+    @media (max-width: $breakpoint-md - 1)
+      float: none
 
   &__aside
-    float: right
+    text-align: right
+
+    @media (max-width: $breakpoint-md - 1)
+      text-align: left
+      margin-top: 10px
 
   &__button
     display: inline-block
@@ -36,6 +50,9 @@
     vertical-align: bottom
     margin-left: 30px
 
+    @media (max-width: $breakpoint-lg - 1)
+      margin-left: 10px
+
   &__counter-title
     font-size: 11px
     color: #227eba
@@ -52,21 +69,28 @@
     font-family: 'DIN Pro Cond'
     font-weight: bold
 
+  &__slider-wrapper
+    @media (max-width: $breakpoint-md - 1)
+      margin-left: 20px
+      margin-right: 20px
+
   &__slider
     margin-top: 50px
 
   &__card
     background: #fff
     border: 1px solid #D5D9DB
-    display: inline-block
+    //display: inline-block
     padding: 7px
     height: 261px
     border-radius: 3px
     line-height: 1.4
+    //margin: 0 7px
 
   &__image
     display: block
-    margin-bottom: 13px
+    max-width: 194px
+    margin: 0 auto 13px
 
   &__date
     font-size: 13px
@@ -86,6 +110,25 @@
 
   &__subtitle,
   &__description
-    ont-size: 14px
+    font-size: 14px
     color: #969696
     margin-bottom: 5px
+
+  .owl-prev
+  .owl-next
+    position: absolute
+    top: 50%
+    margin-top: -20px
+
+  .owl-prev
+    right: 100%
+    margin-right: 25px
+    background-image: url(sprite-arrow-left.svg)
+    @media (max-width: $breakpoint-md - 1)
+      margin-right: 10px
+  .owl-next
+    left: 100%
+    margin-left: 25px
+    background-image: url(sprite-arrow-right.svg)
+    @media (max-width: $breakpoint-md - 1)
+      margin-left: 10px
