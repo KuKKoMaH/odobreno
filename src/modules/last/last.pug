@@ -1,7 +1,9 @@
+include ../button/button
+
 section.last: .w
   .last__header Последние одобренные объекты
   .last__aside
-    a.last__button смотреть весь реестр
+    +button('a').last__button--top смотреть весь реестр
     .last__counter
       .last__counter-title Уже одобрено
       .last__flip 1
@@ -58,3 +60,5 @@ section.last: .w
       .last__title Москва
       .last__subtitle ЖК «Петербург»
       .last__description 3-х комн. кв.
+
+  +button('a').last__button--bottom смотреть весь реестр

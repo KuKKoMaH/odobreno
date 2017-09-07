@@ -1,4 +1,5 @@
 extends pug/_layout
+include modules/popup/popup
 
 block body
   include modules/header/header
@@ -7,3 +8,10 @@ block body
   include modules/works/works
   include modules/advantages/advantages
   include modules/footer/footer
+  .popups
+    +popup()#popup-register
+      .popup__text Войти в личный кабинет
+      form(novalidate)
+        .popup__input: +input('Телефон')(type='phone')
+        .popup__input: +input('Пароль')(type='password')
+        +button('input', true)(value='Войти')

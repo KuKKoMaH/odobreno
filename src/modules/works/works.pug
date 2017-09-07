@@ -1,6 +1,7 @@
+include ../button/button
 section.works
   .works__title Как это работает
-  .w
+  .w.works__items
     .c.c4.works__item
       .works__name Заявка
       .works__text Вы заполняете заявку, прикладываете необходимые документы и проводите оплату удобным способом
@@ -10,4 +11,4 @@ section.works
     .c.c4.works__item
       .works__name Одобрено
       .works__text Сертификат «Одобрено» высылаем на Вашу электронную почту
-  button.works__button Заполнить заявку
+  +button() Заполнить заявку

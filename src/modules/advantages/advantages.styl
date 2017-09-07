@@ -3,11 +3,16 @@ $baseClass = '.advantages'
   padding: 80px 0
   text-align: center
 
+  @media (max-width: $breakpoint-sm - 1)
+    padding: 40px 0
+
   &__title
     font-size: 22px
     color: #227eba
     text-transform: uppercase
     margin-bottom: 75px
+    @media (max-width: $breakpoint-sm - 1)
+      margin-bottom: 35px
 
   &__item
     text-align: left
@@ -23,6 +28,7 @@ $baseClass = '.advantages'
 
     @media (max-width: $breakpoint-sm - 1)
       margin-bottom: 40px
+      text-align: center
 
   &__image
     width: 50%
@@ -53,23 +59,3 @@ $baseClass = '.advantages'
   &__text
     font-size: 17px
     color: #50758b
-
-  &__button
-    margin-top: 55px
-    border: 1px solid #B5C9DF
-    background: transparent
-    color: #5c93d3
-    height: 64px
-    border-radius: 4px
-    font-size: 15px
-    text-transform: uppercase
-    padding: 0 45px
-    cursor: pointer
-    anim()
-    outline: 0
-
-    &:hover
-      border: 1px solid #4476B0
-
-    @media (max-width: $breakpoint-sm - 1)
-      margin-top: 0px

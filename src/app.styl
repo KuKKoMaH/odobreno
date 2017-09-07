@@ -1,9 +1,8 @@
 @import "owl.carousel/dist/assets/owl.carousel.css";
+@import "magnific-popup/dist/magnific-popup.css";
 @import "stylus/_vars.styl";
 @import "stylus/_mixins.styl";
 @import "stylus/_grid.styl";
-
-
 
 @font-face {
   font-family: 'DIN Pro Cond';
@@ -29,6 +28,9 @@ body
   margin: 0
   padding: 0
   background: #F0F5F8
+  -webkit-font-smoothing: antialiased
+  -webkit-text-size-adjust: 100%
+  -ms-text-size-adjust: 100%
 //vertical-gradient()
 
 html, body
@@ -51,8 +53,10 @@ button
 
 @import "modules/header/header.styl"
 @import "modules/input/input.styl"
+@import "modules/button/button.styl"
 @import "modules/last/last.styl"
 @import "modules/video/video.styl"
 @import "modules/works/works.styl"
 @import "modules/advantages/advantages.styl"
 @import "modules/footer/footer.styl"
+@import "modules/popup/popup.styl"

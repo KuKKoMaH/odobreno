@@ -1,26 +1,43 @@
 import 'jquery';
 import 'owl.carousel';
+import 'magnific-popup/dist/jquery.magnific-popup.js';
+import 'jquery.maskedinput/src/jquery.maskedinput';
 // import 'owl.carousel/dist/assets/owl.carousel.css';
 
 $('.last__slider').owlCarousel({
-  items:   1,
-  margin:  24,
-  dots:    false,
-  nav:     true,
-  navText: ['', ''],
-
+  items:      3,
+  autoWidth:  true,
+  margin:     24,
+  dots:       false,
+  nav:        true,
+  navText:    ['', ''],
+  center:     true,
   responsive: {
-    460: {
-      items: 2,
-    },
     768:  {
-      items: 3,
+      items:     3,
+      center:    false,
+      autoWidth: false,
     },
     992:  {
-      items: 4,
+      items:     4,
+      center:    false,
+      autoWidth: false,
     },
     1199: {
-      items: 5,
+      items:     5,
+      center:    false,
+      autoWidth: false,
     }
+    // 420:  { items: 2, },
+    // 660:  { items: 3, },
   }
 });
+
+$('.header__cabinet, .header__button').magnificPopup({
+  items: {
+    src:  '#popup-register',
+    type: 'inline'
+  }
+});
+
+$('input[type="phone"]').mask("+7 (999) 999-99-99");

@@ -4,6 +4,7 @@ header.header
   .w
     .header__top
       .header__logo
+      button.header__hamburger
       .header__menu
         ul
           li: a(href='#') Реестр объектов
@@ -11,12 +12,12 @@ header.header
           li: a(href='#') Наши преимущества
         button.header__button ЗАКАЗАТЬ
         button.header__cabinet Личный кабинет
-    .header__content
       .header__vtb
+    .header__content
       h1 Нет нужды ехать в офис
       h2 –  наши сотрудники узнают всё про недвижимость#[br]которая вас интересует и помогут с ипотекой!
     .header__form-wrapper
-      .header__form-title Оставить заявку на проверку недвижимости
+      .header__form-title #[span Оставить заявку] на проверку недвижимости
       form.header__form(novalidate)
         .header__form-input.header__address: +input('Адрес')
         .header__form-input.header__apart: +input('Квартира')

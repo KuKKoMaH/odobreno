@@ -4,7 +4,12 @@
   background: #F0F5F8
   overflow: hidden
 
+  @media (max-width: $breakpoint-sm - 1)
+    padding: 25px 0
+
+
   @media (max-width: $breakpoint-md - 1)
+    text-align: center
     .w
       padding-left: 10px
       padding-right: 10px
@@ -18,46 +23,42 @@
 
     @media (max-width: $breakpoint-md - 1)
       float: none
+      text-align: center
+      font-weight: bold
+
+  &__button
+    &--top
+      @media (max-width: $breakpoint-md - 1)
+        display: none
+    &--bottom
+      margin-top: 40px
+      display: none
+      @media (max-width: $breakpoint-md - 1)
+        display: inline-block
+
 
   &__aside
     text-align: right
 
     @media (max-width: $breakpoint-md - 1)
-      text-align: left
+      text-align: inherit
       margin-top: 10px
-
-  &__button
-    display: inline-block
-    vertical-align: bottom
-    border: 1px solid #B5C9DF
-    background: transparent
-    color: #5c93d3
-    height: 54px
-    line-height: 54px
-    border-radius: 4px
-    font-size: 13px
-    text-transform: uppercase
-    padding: 0 15px
-    cursor: pointer
-    anim()
-    outline: 0
-
-    &:hover
-      border: 1px solid #4476B0
 
   &__counter
     display: inline-block
     vertical-align: bottom
     margin-left: 30px
+    font-size: 0
 
     @media (max-width: $breakpoint-lg - 1)
-      margin-left: 10px
+      margin-left: 5px
 
   &__counter-title
     font-size: 11px
     color: #227eba
     text-transform: uppercase
     margin-bottom: 4px
+    text-align: left
 
   &__flip
     display: inline-block
@@ -68,16 +69,24 @@
     background-image: url(sprite-flip.svg)
     font-family: 'DIN Pro Cond'
     font-weight: bold
+    margin: 0 1px
+    @media (max-width: $breakpoint-sm - 1)
+      transform: scale(0.85)
+      margin: 0 -2px
 
   &__slider-wrapper
     @media (max-width: $breakpoint-md - 1)
       margin-left: 20px
       margin-right: 20px
+    @media (max-width: $breakpoint-sm - 1)
+      margin-left: -10px
+      margin-right: -10px
 
   &__slider
     margin-top: 50px
 
   &__card
+    text-align: left
     background: #fff
     border: 1px solid #D5D9DB
     //display: inline-block
@@ -119,6 +128,11 @@
     position: absolute
     top: 50%
     margin-top: -20px
+    opacity: .6
+    anim()
+
+    &:hover
+      opacity: 1
 
   .owl-prev
     right: 100%

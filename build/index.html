@@ -14,6 +14,7 @@
       <div class="w">
         <div class="header__top">
           <div class="header__logo"></div>
+          <button class="header__hamburger"></button>
           <div class="header__menu">
             <ul>
               <li><a href="#">Реестр объектов</a></li>
@@ -23,14 +24,14 @@
             <button class="header__button">ЗАКАЗАТЬ</button>
             <button class="header__cabinet">Личный кабинет</button>
           </div>
+          <div class="header__vtb"></div>
         </div>
         <div class="header__content">
-          <div class="header__vtb"></div>
           <h1>Нет нужды ехать в офис</h1>
           <h2>–  наши сотрудники узнают всё про недвижимость<br>которая вас интересует и помогут с ипотекой!</h2>
         </div>
         <div class="header__form-wrapper">
-          <div class="header__form-title">Оставить заявку на проверку недвижимости</div>
+          <div class="header__form-title"><span>Оставить заявку</span> на проверку недвижимости</div>
           <form class="header__form" novalidate="">
             <div class="header__form-input header__address">
                   <div class="input">
@@ -60,7 +61,9 @@
     <section class="last">
       <div class="w">
         <div class="last__header">Последние одобренные объекты</div>
-        <div class="last__aside"><a class="last__button">смотреть весь реестр</a>
+        <div class="last__aside">
+              <a class="button last__button--top" type="submit">смотреть весь реестр
+              </a>
           <div class="last__counter">
             <div class="last__counter-title">Уже одобрено</div>
             <div class="last__flip">1</div>
@@ -122,6 +125,8 @@
             </div>
           </div>
         </div>
+            <a class="button last__button--bottom" type="submit">смотреть весь реестр
+            </a>
       </div>
     </section>
     <section class="video">
@@ -137,7 +142,7 @@
     </section>
     <section class="works">
       <div class="works__title">Как это работает</div>
-      <div class="w">
+      <div class="w works__items">
         <div class="c c4 works__item">
           <div class="works__name">Заявка</div>
           <div class="works__text">Вы заполняете заявку, прикладываете необходимые документы и проводите оплату удобным способом</div>
@@ -151,7 +156,8 @@
           <div class="works__text">Сертификат «Одобрено» высылаем на Вашу электронную почту</div>
         </div>
       </div>
-      <button class="works__button">Заполнить заявку</button>
+          <button class="button" type="submit">Заполнить заявку
+          </button>
     </section>
     <div class="advantages">
       <div class="advantages__title">Наши преимущества</div>
@@ -192,7 +198,8 @@
           </div>
         </div>
       </div>
-      <button class="advantages__button">заказать «одобрено»</button>
+          <button class="button" type="submit">заказать «одобрено»
+          </button>
     </div>
     <footer class="footer footer--line">
       <div class="w">
@@ -206,6 +213,28 @@
         <div class="c c6 footer__icons"><a class="footer__icon footer__icon--vk" href="#"></a><a class="footer__icon footer__icon--fb" href="#"></a><a class="footer__icon footer__icon--ins" href="#"></a><a class="footer__icon footer__icon--tw" href="#"></a></div>
       </div>
     </footer>
+    <div class="popups">
+      <div class="popup" id="popup-register">
+        <div class="popup__close"></div>
+        <div class="popup__text">Войти в личный кабинет</div>
+        <form novalidate="">
+          <div class="popup__input">
+                <div class="input">
+                  <input class="input__input" value="" required="" type="phone">
+                  <label class="input__label">Телефон</label>
+                </div>
+          </div>
+          <div class="popup__input">
+                <div class="input">
+                  <input class="input__input" value="" required="" type="password">
+                  <label class="input__label">Пароль</label>
+                </div>
+          </div>
+              <input class="button button--block" type="submit" value="Войти">
+              
+        </form>
+      </div>
+    </div>
   </body>
   <script src="js/app.js"></script>
 </html>
