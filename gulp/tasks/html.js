@@ -1,11 +1,11 @@
 var gulp = require('gulp');
 var pug = require('gulp-pug');
 var plumber = require('gulp-plumber');
-var notify = require('gulp-notify');
+var watch = require('gulp-watch');
 
 gulp.task('html', function () {
   return gulp.src('src/[^_]*.pug')
-    .pipe(plumber({ errorHandler: notify.onError(function (error) {return error.message;}) }))
+    .pipe(plumber({ errorHandler: require('../assets/errorHandler') }))
     .pipe(pug({
       pretty: true,
     }))
@@ -13,5 +13,7 @@ gulp.task('html', function () {
 });
 
 gulp.task('html:watch', function () {
-  gulp.watch(['src/[^_]*.pug'], ['html']);
+  watch('src/**/*.pug', function () {
+    gulp.run('html');
+  });
 });

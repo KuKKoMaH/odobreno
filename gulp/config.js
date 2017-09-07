@@ -31,11 +31,10 @@ var config = {
   dest: {
     root:  destPath,
     html:  destPath,
-    css:   destPath + '/css',
+    css:   destPath,
     js:    destPath + '/js',
     img:   destPath + '/img',
     fonts: destPath + '/fonts',
-    lib:   destPath + '/lib'
   },
 
   setEnv: function (env) {

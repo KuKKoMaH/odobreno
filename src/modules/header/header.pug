@@ -1,0 +1,24 @@
+include ../input/input
+
+header.header
+  .w
+    .header__top
+      .header__logo
+      .header__menu
+        ul
+          li: a(href='#') Реестр объектов
+          li: a(href='#') Как это работает
+          li: a(href='#') Наши преимущества
+        button.header__button ЗАКАЗАТЬ
+        button.header__cabinet Личный кабинет
+    .header__content
+      .header__vtb
+      h1 Нет нужды ехать в офис
+      h2 –  наши сотрудники узнают всё про недвижимость#[br]которая вас интересует и помогут с ипотекой!
+    .header__form-wrapper
+      .header__form-title Оставить заявку на проверку недвижимости
+      form.header__form(novalidate)
+        .header__form-input.header__address: +input('Адрес')
+        .header__form-input.header__apart: +input('Квартира')
+        .header__form-input.header__phone: +input('Телефон')
+        .header__form-input.header__submit: button.header__submit-button ЗАКАЗАТЬ «ОДОБРЕНО»

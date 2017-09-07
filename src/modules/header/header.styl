@@ -1,0 +1,119 @@
+.header
+  height: 760px
+  background: url(header-bg.jpg)
+  background-size: cover
+  color: #fff
+  padding-top: 30px
+
+  &__logo
+    float: left
+    background-image: url(sprite-logo-white.svg)
+
+  &__menu
+    text-align: right
+    font-size: 13px
+
+    ul
+      display: inline-block
+
+    li
+      display: inline-block
+      margin-right: 35px
+
+    a
+      display: block
+      border-bottom: 3px solid transparent
+      text-transform: uppercase
+      padding-bottom: 5px
+      anim()
+      &:hover
+        border-bottom: 3px solid #fff
+
+  &__button
+    background: #fff
+    border: 0
+    color: #227eba
+    height: 42px
+    border-radius: 21px
+    padding: 0 21px
+    cursor: pointer
+    margin-right: 35px
+    font-weight: bold
+
+  &__cabinet
+    background-color: transparent
+    border: 0
+    font-size: 14px
+    cursor: pointer
+    &:before
+      content: ''
+      display: inline-block
+      vertical-align: bottom
+      background-image: url(sprite-cabinet.svg)
+      margin-right: 4px
+
+  &__content
+    margin-top: 60px
+    
+  &__vtb
+    background-image: url(sprite-vtb.svg)
+    float: right
+
+  h1
+    font-weight: 400
+    font-size: 58px
+    margin: 0 0 20px
+
+  h2
+    font-weight: 300
+    font-size: 25px
+    margin: 0
+    text-indent: -20px
+    line-height: 1.55
+
+  &__form
+    font-size: 0
+    margin: 0 -7px
+
+    &-wrapper
+      margin-top: 150px
+      padding: 30px 70px
+      background: #fff
+      box-shadow: 0 15px 16px rgba(#1A3365, .27)
+      border-radius: 6px
+
+    &-title
+      color: #2973a8
+      font-size: 22px
+      margin-bottom: 25px
+
+    &-input
+      display: inline-block
+      vertical-align: middle
+      padding: 0 7px
+
+  &__address
+    width: 27%
+
+  &__apart
+    width: 19%
+
+  &__phone
+    width: 27%
+
+  &__submit
+    width: 27%
+
+    &-button
+      display: block
+      width: 100%
+      border: 0
+      background: #4caf50
+      color: #ffffff
+      height: 64px
+      line-height: 1.4
+      font-size: 15px
+      font-weight: bold
+      border-radius: 4px
+
+

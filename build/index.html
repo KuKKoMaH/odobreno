@@ -5,9 +5,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700&amp;amp;subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" media="all" href="app.css">
     <!--link(rel="shortcut icon" href="/favicon.ico")-->
   </head>
   <body>
-    <h1>HELLO</h1>
+    <header class="header">
+      <div class="w">
+        <div class="header__top">
+          <div class="header__logo"></div>
+          <div class="header__menu">
+            <ul>
+              <li><a href="#">Реестр объектов</a></li>
+              <li><a href="#">Как это работает</a></li>
+              <li><a href="#">Наши преимущества</a></li>
+            </ul>
+            <button class="header__button">ЗАКАЗАТЬ</button>
+            <button class="header__cabinet">Личный кабинет</button>
+          </div>
+        </div>
+        <div class="header__content">
+          <div class="header__vtb"></div>
+          <h1>Нет нужды ехать в офис</h1>
+          <h2>–  наши сотрудники узнают всё про недвижимость<br>которая вас интересует и помогут с ипотекой!</h2>
+        </div>
+        <div class="header__form-wrapper">
+          <div class="header__form-title">Оставить заявку на проверку недвижимости</div>
+          <form class="header__form" novalidate>
+            <div class="header__form-input header__address">
+                  <div class="input">
+                    <input class="input__input" value="" required>
+                    <label class="input__label">Адрес</label>
+                  </div>
+            </div>
+            <div class="header__form-input header__apart">
+                  <div class="input">
+                    <input class="input__input" value="" required>
+                    <label class="input__label">Квартира</label>
+                  </div>
+            </div>
+            <div class="header__form-input header__phone">
+                  <div class="input">
+                    <input class="input__input" value="" required>
+                    <label class="input__label">Телефон</label>
+                  </div>
+            </div>
+            <div class="header__form-input header__submit">
+              <button class="header__submit-button">ЗАКАЗАТЬ «ОДОБРЕНО»</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </header>
+    <div class="last">
+      <div class="w">
+        <h2>Последние одобренные объекты</h2>
+        <div class="last__slider">
+          <div class="last__card"><img class="last__image" src="https://placehold.it/194x124">
+            <div class="last__date">10.09.2017</div>
+            <div class="last__title">Москва</div>
+            <div class="last__subtitle">ЖК «Петербург»</div>
+            <div class="last__description">3-х комн. кв.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="video">
+      <div class="video__container">
+        <div class="view__content">
+          <div class="video__title">Призыв посмотреть<br>видео «О НАС»</div>
+          <div class="video__text">Текст который объясняет почему стоит посмотреть это видео</div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
