@@ -1,4 +1,43 @@
 .video
   background: #E6E8EB
+  display: table
+  width: 100%
+
+  &__wrapper
+    display: table-row
+
+  &__container
+    width: 50%
+    display: table-cell
+    vertical-align: middle
+    cf()
 
   &__content
+    position: relative
+    text-align: center
+
+  &__title
+    font-size: 22px
+    color: #227EBA
+    margin-bottom: 11px
+    text-transform: uppercase
+
+  &__text
+    font-size: 18px
+    color: #4a4a4a
+
+  &__video
+    display: table-cell
+    width: 50%
+    height: 600px
+    background: url(video-preview.jpg)
+    background-size: cover
+    position: relative
+
+    &:after
+      content: ''
+      background-image: url(sprite-play.svg)
+      position: absolute
+      left: 50%
+      top: 50%
+      transform: translate(-50%, -50%)

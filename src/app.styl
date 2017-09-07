@@ -2,6 +2,19 @@
 @import "stylus/_mixins.styl";
 @import "stylus/_grid.styl";
 
+@font-face {
+  font-family: 'DIN Pro Cond';
+  src: url('fonts/subset-DINPro-CondensedBold.eot');
+  src: url('fonts/subset-DINPro-CondensedBold.eot?#iefix') format('embedded-opentype'),
+          url('fonts/subset-DINPro-CondensedBold.woff2') format('woff2'),
+          url('fonts/subset-DINPro-CondensedBold.woff') format('woff'),
+          url('fonts/subset-DINPro-CondensedBold.ttf') format('truetype'),
+          url('fonts/subset-DINPro-CondensedBold.svg#DINPro-CondensedBold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
 html
   margin: 0
   padding: 0
@@ -37,3 +50,6 @@ button
 @import "modules/input/input.styl"
 @import "modules/last/last.styl"
 @import "modules/video/video.styl"
+@import "modules/works/works.styl"
+@import "modules/advantages/advantages.styl"
+@import "modules/footer/footer.styl"
