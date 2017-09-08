@@ -64,6 +64,7 @@ const play = (img, force) => {
     currentAnimation = img;
     setTimeout(() => {
       currentAnimation = null;
+      img.complete = true;
       playNext();
     }, 1000);
   }
@@ -73,12 +74,16 @@ $('.works__image img').each((i, el) => {
     const $img = $(content).find('svg');
     $(el).replaceWith($img);
     const $parent = $img.parents('.works__item');
-    const img = { $el: $img, el: $parent[0], played: false };
+    const img = { $el: $img, el: $parent[0], played: false, complete: false };
     $parent.on('mouseenter', () => {
+      if (!img.complete) return;
       play(img, true);
       setTimeout(() => $img[0].pauseAnimations(), 750);
     });
-    $parent.on('mouseleave', () => $img[0].unpauseAnimations());
+    $parent.on('mouseleave', () => {
+      if (!img.complete) return;
+      $img[0].unpauseAnimations();
+    });
     images.push(img);
   });
 });
