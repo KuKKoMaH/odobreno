@@ -42,6 +42,7 @@
     "jquery.maskedinput": "^1.4.1",
     "magnific-popup": "^1.1.0",
     "owl.carousel": "^2.2.0",
+    "snapsvg": "^0.5.1",
     "webpack": "^3.5.5"
   }
 }

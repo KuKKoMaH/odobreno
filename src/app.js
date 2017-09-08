@@ -2,7 +2,7 @@ import 'jquery';
 import 'owl.carousel';
 import 'magnific-popup/dist/jquery.magnific-popup.js';
 import 'jquery.maskedinput/src/jquery.maskedinput';
-// import 'owl.carousel/dist/assets/owl.carousel.css';
+// import 'snapsvg';
 
 $('.last__slider').owlCarousel({
   items:      3,
@@ -41,3 +41,11 @@ $('.header__cabinet, .header__button').magnificPopup({
 });
 
 $('input[type="phone"]').mask("+7 (999) 999-99-99");
+
+$('.works__image img').each((i, el) => {
+  $.get(el.src, (content) => {
+    const $img = $(content).find('svg');
+    $(el).replaceWith($img);
+    $img.on('click', () => $img.find('animate, animateTransform').each((i, animate) => animate.beginElement()))
+  });
+})
