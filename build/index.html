@@ -14,15 +14,20 @@
       <div class="w">
         <div class="header__top">
           <div class="header__logo"></div>
-          <button class="header__hamburger"></button>
-          <div class="header__menu">
+          <button class="menu__hamburger"></button>
+          <div class="menu__wrapper">
+            <button class="menu__close"></button>
             <ul>
-              <li><a href="#">Реестр объектов</a></li>
-              <li><a href="#">Как это работает</a></li>
-              <li><a href="#">Наши преимущества</a></li>
+              <li class="menu__active"><a href="#">Реестр объектов</a></li>
+              <li><a href="#works">Как это работает</a></li>
+              <li><a href="#advantages">Наши преимущества</a></li>
             </ul>
-            <button class="header__button">ЗАКАЗАТЬ</button>
-            <button class="header__cabinet">Личный кабинет</button>
+            <div class="menu__item">
+              <button class="menu__button">ЗАКАЗАТЬ</button>
+            </div>
+            <div class="menu__item">
+              <button class="menu__cabinet">Личный кабинет</button>
+            </div>
           </div>
           <div class="header__vtb"></div>
         </div>
@@ -140,7 +145,7 @@
         <div class="video__video"></div>
       </div>
     </section>
-    <section class="works">
+    <section class="works" id="works">
       <div class="works__title">Как это работает</div>
       <div class="w works__items">
         <div class="c c4 works__item">
@@ -162,7 +167,7 @@
           <button class="button" type="submit">Заполнить заявку
           </button>
     </section>
-    <div class="advantages">
+    <div class="advantages" id="advantages">
       <div class="advantages__title">Наши преимущества</div>
       <div class="w advantages__items">
         <div class="advantages__item">

@@ -3,11 +3,14 @@
 
 .popup
   position: relative
-  width: 360px
+  max-width: 360px
   background: #ffffff
   border-radius: 3px
   margin: 0 auto
   padding: 34px 40px
+
+  @media (max-width: $breakpoint-sm - 1)
+    padding: 34px 15px
 
   &__text
     color: #2973a8
