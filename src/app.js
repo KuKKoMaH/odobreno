@@ -6,6 +6,7 @@ import 'jquery.maskedinput/src/jquery.maskedinput';
 import './modules/menu/menu';
 import './modules/works/works';
 import './modules/last/last';
+import './modules/registry/registry';
 
 $('input[type="phone"]').mask("+7 (999) 999-99-99");
 

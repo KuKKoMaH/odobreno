@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-function createConfig(env) {
+function createConfig (env) {
   var isProduction, webpackConfig;
 
   if (env === undefined) {
@@ -19,14 +19,28 @@ function createConfig(env) {
     },
     devtool: isProduction ? '#source-map' : '#cheap-module-eval-source-map',
     module:  {
-      rules: [{
-        test:    /\.js$/,
-        exclude: /node_modules/,
-        loader:  'babel-loader',
-        options: {
-          presets: ['es2015', 'stage-2']
+      rules: [
+        {
+          test: require.resolve("jquery"),
+          use:  [
+            {
+              loader:  'expose-loader',
+              options: 'jQuery'
+            }, {
+              loader:  'expose-loader',
+              options: '$'
+            },
+          ]
+        },
+        {
+          test:    /\.js$/,
+          exclude: /node_modules/,
+          loader:  'babel-loader',
+          options: {
+            presets: ['es2015', 'stage-2']
+          }
         }
-      }]
+      ]
     },
     plugins: [
       // new webpack.optimize.CommonsChunkPlugin({

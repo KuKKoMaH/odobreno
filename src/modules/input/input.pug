@@ -1,4 +1,6 @@
-mixin input(placeholder)
-  .input
+mixin input(placeholder, search)
+  .input(class=search && 'input--search')
     input.input__input(value='' required)&attributes(attributes)
     label.input__label= placeholder
+    if (block)
+      block

@@ -1,4 +1,17 @@
-.menu
+$baseClass = '.menu'
+
+{$baseClass}
+  &__logo
+    float: left
+    background-image: url(sprite-logo-white.svg)
+    display: block
+
+    @media (max-width: $breakpoint-md - 1)
+      float: none
+      margin: 0 auto
+    @media (max-width: $breakpoint-sm - 1)
+      display: inline-block
+
   &__hamburger,
   &__close
     display: none
@@ -39,11 +52,13 @@
       opacity: 0
       anim()
 
+    &--visible
+      @media (max-width: $breakpoint-sm - 1)
+        display: block
     &--active
       @media (max-width: $breakpoint-sm - 1)
         transform: translateY(0px)
         opacity: 1
-        //display: block
 
     ul
       display: inline-block
@@ -145,3 +160,40 @@
 
       &:before
         background-image: url(sprite-cabinet-blue.svg)
+
+  &--full
+    background: #fff
+    padding: 23px 0 20px
+    color:  #227eba
+
+    @media (max-width: $breakpoint-md - 1)
+      padding: 8px 0
+    @media (max-width: $breakpoint-sm - 1)
+      text-align: center
+
+    {$baseClass}__logo
+      background-image: url(sprite-logo-color.svg)
+
+    {$baseClass}__cabinet:before
+      background-image: url(sprite-cabinet-blue.svg)
+
+    {$baseClass}__wrapper
+      @media (max-width: $breakpoint-md - 1)
+        padding-top: 0
+
+      {$baseClass}__active a,
+      a:hover
+        border-color: #227EBA
+
+    {$baseClass}__button
+      background: #4CAF50
+      color: #ffffff
+      border: 2px solid #4CAF50
+
+      &:hover
+        background-color: transparent
+        color: #4CAF50
+
+    {$baseClass}__hamburger
+      background-image: url(sprite-menu-black.svg)
+      top: 20px

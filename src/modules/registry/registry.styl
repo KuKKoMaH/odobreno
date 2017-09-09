@@ -1,0 +1,54 @@
+.registry
+  flex: 1
+  position: relative
+  display: flex
+  flex-direction: column
+
+  @media (max-width: $breakpoint-sm - 1)
+    display: block
+
+  .w
+    flex: 1
+    position: relative
+
+  &__container
+    position: absolute
+    height: 100%
+    width: 100%
+    background: #ffffff
+    border-radius: 3px
+    box-shadow: 0 21px 32px rgba(#233C4C, .05)
+    overflow: auto
+    font-size: 12px
+
+    @media (max-width: $breakpoint-sm - 1)
+      position: static
+
+  .baron__scroller
+    padding: 22px 44px
+
+  &__row
+    margin: 0 0 37px
+    cf()
+
+  &__number,
+  &__address,
+  &__date,
+  &__status,
+  &__certificate
+    float: left
+
+    @media (max-width: $breakpoint-sm - 1)
+      float: none
+      width: auto !important
+
+  &__number
+    width: 7%
+  &__address
+    width: 48%
+  &__date
+    width: 15%
+  &__status
+    width: 15%
+  &__certificate
+    width: 15%

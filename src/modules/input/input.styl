@@ -34,3 +34,21 @@
     top: 22px
     pointer-events: none
     anim()
+
+  &--search
+
+    &:after
+      content: ''
+      display: block
+      background-image: url(sprite-search.svg)
+      position: absolute
+      right: 14px
+      top: 50%
+      transform: translateY(-50%)
+      pointer-events: none
+
+    .input__input
+      background: #E0E9EF
+      color: #40647C
+      &:focus
+        border-color: transparent

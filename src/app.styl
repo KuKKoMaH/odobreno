@@ -1,5 +1,7 @@
 @import "owl.carousel/dist/assets/owl.carousel.css";
 @import "magnific-popup/dist/magnific-popup.css";
+@import "baron/baron.css";
+
 @import "stylus/_vars.styl";
 @import "stylus/_mixins.styl";
 @import "stylus/_grid.styl";
@@ -23,6 +25,7 @@ html
   font-family: 'Ubuntu', sans-serif
   font-size: $font-size
   line-height: $line-height
+  height: 100%
 
 body
   margin: 0
@@ -31,10 +34,13 @@ body
   -webkit-font-smoothing: antialiased
   -webkit-text-size-adjust: 100%
   -ms-text-size-adjust: 100%
-//vertical-gradient()
+  min-height: 100%
+  position: relative
+  display: flex
+  flex-direction: column
 
-html, body
-  height: 100%
+::-webkit-scrollbar
+  width: 0
 
 *, *:before, *:after
   box-sizing: border-box
@@ -61,3 +67,5 @@ button
 @import "modules/advantages/advantages.styl"
 @import "modules/footer/footer.styl"
 @import "modules/popup/popup.styl"
+@import "modules/registry/registry.styl"
+@import "modules/search/search.styl"
