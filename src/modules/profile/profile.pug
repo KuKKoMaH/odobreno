@@ -1,0 +1,21 @@
+mixin profile()
+  .profile
+    .profile__wrapper
+      .profile__logo
+      .profile__info
+        .profile__avatar: img(src='modules/profile/avatar.jpg')
+        .profile__name Иванов Иван
+        .profile__text Что здесь должно находиться?
+      table.profile__stats
+        tbody
+          tr
+            td В процессе:
+            td.profile__count 4
+          tr
+            td Готово:
+            td.profile__count 5
+          tr
+            td Отменено:
+            td.profile__count 7
+    if(block)
+      block

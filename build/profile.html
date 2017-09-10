@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700&amp;amp;subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" media="all" href="style.css">
+    <!--link(rel="shortcut icon" href="/favicon.ico")-->
+  </head>
+  <body>
+    <div class="profile">
+      <div class="profile__wrapper">
+        <div class="profile__logo"></div>
+        <div class="profile__info">
+          <div class="profile__avatar"><img src="img/modules-profile-avatar.jpg"></div>
+          <div class="profile__name">Иванов Иван</div>
+          <div class="profile__text">Что здесь должно находиться?</div>
+        </div>
+        <table class="profile__stats">
+          <tbody>
+            <tr>
+              <td>В процессе:</td>
+              <td class="profile__count">4</td>
+            </tr>
+            <tr>
+              <td>Готово:</td>
+              <td class="profile__count">5</td>
+            </tr>
+            <tr>
+              <td>Отменено:</td>
+              <td class="profile__count">7</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <footer class="footer footer--line">
+        <div class="w">
+          <div class="c c6">
+            <div>
+              <div class="footer__logo"></div>
+              <div class="footer__vtb"></div>
+            </div>
+            <div class="footer__copyright">© 2017 «Одобрено», «ВТБ», все права защищены</div>
+          </div>
+          <div class="c c6 footer__icons"><a class="footer__icon footer__icon--vk" href="#"></a><a class="footer__icon footer__icon--fb" href="#"></a><a class="footer__icon footer__icon--ins" href="#"></a><a class="footer__icon footer__icon--tw" href="#"></a></div>
+        </div>
+      </footer>
+    </div>
+    <div class="popups">
+      <div class="popup" id="popup-register">
+        <div class="popup__close"></div>
+        <div class="popup__text">Войти в личный кабинет</div>
+        <form novalidate="">
+          <div class="popup__input">
+            <div class="input">
+              <input class="input__input" value="" required="required" type="phone">
+              <label class="input__label">Телефон</label>
+            </div>
+          </div>
+          <div class="popup__input">
+            <div class="input">
+              <input class="input__input" value="" required="required" type="password">
+              <label class="input__label">Пароль</label>
+            </div>
+          </div>
+          <input class="button button--block" type="submit" value="Войти">
+          
+        </form>
+      </div>
+    </div>
+  </body>
+  <script>var API_KEY = "fdd27007fe8069d376aa269885162a16ef0e55d4";</script>
+  <script src="js/app.js"></script>
+</html>

@@ -1,0 +1,8 @@
+extends pug/_layout
+include modules/popup/popup
+include modules/menu/menu
+include modules/profile/profile
+
+block body
+  +profile()
+    include modules/footer/footer

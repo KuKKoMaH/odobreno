@@ -65,9 +65,9 @@ gulp.task('css', function () {
       })
     ]))
     .pipe(gulpif(config.production, postcss([
-      cssnano(),
       cssnext({ browsers: ['last 10 versions', 'IE > 8'] }),
-      mqpacker({ sort: require('../assets/sortMediaQueries') })
+      mqpacker({ sort: require('../assets/sortMediaQueries') }),
+      cssnano(),
     ])))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('build'));
