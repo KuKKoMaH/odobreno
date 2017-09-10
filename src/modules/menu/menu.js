@@ -1,4 +1,4 @@
-$('.menu__cabinet, .menu__button').magnificPopup({
+$('.menu__cabinet').magnificPopup({
   items: {
     src:  '#popup-register',
     type: 'inline'

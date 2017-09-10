@@ -17,13 +17,11 @@
               <div class="menu__wrapper">
                 <button class="menu__close"></button>
                 <ul>
-                  <li class="menu__active"><a href="#">Реестр объектов</a></li>
+                  <li class="menu__active"><a href="registry.html">Реестр объектов</a></li>
                   <li><a href="#works">Как это работает</a></li>
                   <li><a href="#advantages">Наши преимущества</a></li>
                 </ul>
-                <div class="menu__item">
-                  <button class="menu__button">ЗАКАЗАТЬ</button>
-                </div>
+                <div class="menu__item"><a class="menu__button" href="order_step1.html">ЗАКАЗАТЬ</a></div>
                 <div class="menu__item">
                   <button class="menu__cabinet">Личный кабинет</button>
                 </div>
@@ -45,17 +43,19 @@
                   <div class="input">
                     <input class="input__input" value="" required="">
                     <label class="input__label">Адрес</label>
+                    <div class="input__suggestions"></div>
                   </div>
             </div>
             <div class="header__form-input header__apart">
                   <div class="input">
                     <input class="input__input" value="" required="">
                     <label class="input__label">Квартира</label>
+                    <div class="input__suggestions"></div>
                   </div>
             </div>
             <div class="header__form-input header__phone">
                   <div class="input">
-                    <input class="input__input" value="" required="">
+                    <input class="input__input" value="" required="" type="phone">
                     <label class="input__label">Телефон</label>
                   </div>
             </div>
@@ -70,7 +70,7 @@
       <div class="w">
         <div class="last__header">Последние одобренные объекты</div>
         <div class="last__aside">
-              <a class="button last__button--top" type="submit">смотреть весь реестр
+              <a class="button last__button--top" href="registry.html" type="registry.html">смотреть весь реестр
               </a>
           <div class="last__counter">
             <div class="last__counter-title">Уже одобрено</div>
@@ -167,8 +167,8 @@
           <div class="works__text">Сертификат «Одобрено» высылаем на Вашу электронную почту</div>
         </div>
       </div>
-          <button class="button" type="submit">Заполнить заявку
-          </button>
+          <a class="button" href="order_step1.html" type="order_step1.html">Заполнить заявку
+          </a>
     </section>
     <div class="advantages" id="advantages">
       <div class="advantages__title">Наши преимущества</div>
@@ -209,8 +209,8 @@
           </div>
         </div>
       </div>
-          <button class="button" type="submit">заказать «одобрено»
-          </button>
+          <a class="button" href="order_step1.html" type="order_step1.html">заказать «одобрено»
+          </a>
     </div>
     <footer class="footer footer--line">
       <div class="w">
@@ -247,5 +247,6 @@
       </div>
     </div>
   </body>
+  <script>var API_KEY = "fdd27007fe8069d376aa269885162a16ef0e55d4";</script>
   <script src="js/app.js"></script>
 </html>

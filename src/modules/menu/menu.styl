@@ -85,18 +85,18 @@ $baseClass = '.menu'
         color: #227eba
         font-size: 17px
 
-    a
-      display: block
-      border-bottom: 3px solid transparent
-      text-transform: uppercase
-      padding-bottom: 5px
-      anim()
+      a
+        display: block
+        border-bottom: 3px solid transparent
+        text-transform: uppercase
+        padding-bottom: 5px
+        anim()
 
-      @media (max-width: $breakpoint-sm - 1)
-        display: inline-block
+        @media (max-width: $breakpoint-sm - 1)
+          display: inline-block
 
-  &__active a,
-  &__wrapper a:hover
+  li&__active a,
+  &__wrapper li a:hover
     border-bottom: 3px solid #fff
     @media (max-width: $breakpoint-sm - 1)
       border-bottom: 3px solid #227EBA
@@ -113,9 +113,12 @@ $baseClass = '.menu'
       display: block
 
   &__button
+    display: inline-block
+    vertical-align: middle
     background: #fff
     color: #227eba
     height: 42px
+    line-height: 40px
     border-radius: 21px
     padding: 0 21px
     cursor: pointer
@@ -181,8 +184,8 @@ $baseClass = '.menu'
       @media (max-width: $breakpoint-md - 1)
         padding-top: 0
 
-      {$baseClass}__active a,
-      a:hover
+      li{$baseClass}__active a,
+      li a:hover
         border-color: #227EBA
 
     {$baseClass}__button

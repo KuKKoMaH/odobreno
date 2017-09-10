@@ -5,8 +5,8 @@ mixin menu(full)
     .menu__wrapper
       button.menu__close
       ul
-        li.menu__active: a(href='#') Реестр объектов
+        li.menu__active: a(href='registry.html') Реестр объектов
         li: a(href='#works') Как это работает
         li: a(href='#advantages') Наши преимущества
-      .menu__item: button.menu__button ЗАКАЗАТЬ
+      .menu__item: a.menu__button(href='order_step1.html') ЗАКАЗАТЬ
       .menu__item: button.menu__cabinet Личный кабинет

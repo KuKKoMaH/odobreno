@@ -12,7 +12,7 @@ header.header
     .header__form-wrapper
       .header__form-title #[span Оставить заявку] на проверку недвижимости
       form.header__form(novalidate)
-        .header__form-input.header__address: +input('Адрес')
-        .header__form-input.header__apart: +input('Квартира')
-        .header__form-input.header__phone: +input('Телефон')
+        .header__form-input.header__address: +input('Адрес', false, true)
+        .header__form-input.header__apart: +input('Квартира', false, true)
+        .header__form-input.header__phone: +input('Телефон')(type='phone')
         .header__form-input.header__submit: button.header__submit-button ЗАКАЗАТЬ «ОДОБРЕНО»

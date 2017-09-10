@@ -63,6 +63,10 @@
   &__form
     font-size: 0
     margin: 0 -7px
+    display: flex
+
+    @media (max-width: $breakpoint-sm - 1)
+      flex-direction: column
 
     &-wrapper
       margin-top: 150px
@@ -93,26 +97,22 @@
           font-size: 23px
 
     &-input
-      display: inline-block
-      vertical-align: middle
+      //display: inline-block
+      //vertical-align: middle
+      flex: 1
       padding: 0 7px
 
       @media (max-width: $breakpoint-sm - 1)
         display: block
-        width: 100% !important
+        max-width: 100% !important
         margin-bottom: 8px
 
-  &__address
-    width: 27%
-
   &__apart
-    width: 19%
-
+    max-width: 110px
   &__phone
-    width: 27%
-
+    max-width: 190px
   &__submit
-    width: 27%
+    max-width: 240px
 
     &-button
       display: block

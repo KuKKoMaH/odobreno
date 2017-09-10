@@ -35,6 +35,28 @@
     pointer-events: none
     anim()
 
+  &__suggestions
+    font-size: 13px
+    position: absolute
+    background: #c1d8e5
+    color: #628aa1
+    width: 100%
+    margin-top: -3px
+    border-radius: 0 0 3px 3px
+    display: none
+    z-index: 100
+
+    &--active
+      display: block
+
+  &__suggest
+    padding: 4px 8px
+    anim()
+    cursor: pointer
+
+    &:hover
+      background: #F0F5F8
+
   &--search
 
     &:after

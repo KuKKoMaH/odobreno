@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "baron": "^2.3.1",
+    "bootstrap-datepicker": "^1.7.1",
     "jquery": "^3.2.1",
     "jquery.maskedinput": "^1.4.1",
     "magnific-popup": "^1.1.0",
