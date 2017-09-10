@@ -1,38 +1,12 @@
 include ../input/input
+- var items = ['1. Оформление заказа', '2. оплата', '3. загрузка документов']
 
-.form
-  .form__wrapper
-    .form__header
-      .form__title.form__title--active 1. Оформление заказа
-      .form__title 2. оплата
-      .form__title 3. загрузка документов
-    .form__body
-      .form__order Заказ № 3333
-      .form__label Введите данные объекта
-      .form__row
-        .form__address: +input('Адрес', false, true)
-        .form__apart: +input('Квартира', false, true)
-      .form__label Введите ваши данные
-      .form__row
-        .form__half: +input('Фамилия')
-        .form__half: +input('Имя')
-      .form__row
-        .form__half: +input('Отчество')
-        .form__half: +input('Номер телефона')(type='phone')
-      .form__row
-        .form__half
-          .form__label Введите данные объекта
-          .form__row
-            .form__half: +input('Дата')(class='form__date')
-            .form__half: +input('Время')
-        .form__half
-          .form__label Комментарий к заказу
-          .form__row
-            +input('Введите ваш коментарий')
-      .form__offer
-        input(type='checkbox' id='form-offer')
-        label(for='form-offer') Текст для оферты
-      .form__row
-        .form__half
-          .form_calc Стоимость услуги: #[span.form__price 1000] руб.
-        .form__half: button.form__button Перейти к оплате
+mixin form(step)
+  .form
+    .form__wrapper
+      .form__header
+        each item, i in items
+          .form__title(class=(i === step && 'form__title--active'))= item
+      .form__body
+        if(block)
+          block

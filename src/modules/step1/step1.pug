@@ -1,0 +1,33 @@
+include ../form/form
+
++form(0)
+  form(action='order_step3.html' novalidate)
+    .form__order Заказ № 3333
+    .form__label Введите данные объекта
+      .form__row
+        .form__address: +input('Адрес', false, true)
+        .form__apart: +input('Квартира', false, true)
+      .form__label Введите ваши данные
+      .form__row
+        .form__half: +input('Фамилия')
+        .form__half: +input('Имя')
+      .form__row
+        .form__half: +input('Отчество')
+        .form__half: +input('Номер телефона')(type='phone')
+      .form__row
+        .form__half
+          .form__label Введите данные объекта
+          .form__row
+            .form__half: +input('Дата')(class='form__date')
+            .form__half: +input('Время')
+        .form__half
+          .form__label Комментарий к заказу
+          .form__row
+            +input('Введите ваш коментарий')
+      .form__checkbox
+        input(type='checkbox' id='form-offer')
+        label(for='form-offer') Текст для оферты
+      .form__row
+        .form__half
+          .form_calc Стоимость услуги: #[span.form__price 1000] руб.
+        .form__half: button.form__button Перейти к оплате
