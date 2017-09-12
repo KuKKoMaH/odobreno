@@ -12,43 +12,61 @@
     position: relative
 
   &__container
-    position: absolute
-    height: 100%
     width: 100%
     background: #ffffff
     border-radius: 3px
     box-shadow: 0 21px 32px rgba(#233C4C, .05)
     overflow: auto
     font-size: 12px
-
-    @media (max-width: $breakpoint-sm - 1)
-      position: static
-
-  .baron__scroller
     padding: 22px 44px
 
+    @media (max-width: $breakpoint-sm - 1)
+      background-color: transparent
+      padding: 0
+      box-shadow: none
+
+  &__title,
   &__row
-    margin: 0 0 37px
+    display: flex
     cf()
 
-  &__number,
-  &__address,
-  &__date,
-  &__status,
-  &__certificate
-    float: left
-
+  &__title
+    padding-bottom: 28px
+    border-bottom: 1px solid #ECEAEA
     @media (max-width: $breakpoint-sm - 1)
-      float: none
-      width: auto !important
+      display: none
+
+  &__row
+    margin: 37px 0 0
+    @media (max-width: $breakpoint-sm - 1)
+      background: #ffffff
+      flex-direction: column
+      margin: 7px
+      padding: 17px 22px
+
+  &__cell
+    @media (max-width: $breakpoint-sm - 1)
+      display: flex
+      min-width: 100%
+      margin-top: 12px
+
+      &:first-child
+        margin-top: 0
+
+  &__label
+    display: none
+    min-width: 120px
+    @media (max-width: $breakpoint-sm - 1)
+      display: block
+
+  &__value
+    flex: 1
 
   &__number
-    width: 7%
+    width: 50px
   &__address
-    width: 48%
+    flex: 1
   &__date
-    width: 15%
-  &__status
-    width: 15%
+    width: 150px
   &__certificate
-    width: 15%
+    width: 120px

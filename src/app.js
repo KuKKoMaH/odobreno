@@ -7,7 +7,6 @@ import './modules/header/header';
 import './modules/menu/menu';
 import './modules/works/works';
 import './modules/last/last';
-import './modules/registry/registry';
 import './modules/form/form';
 
 $('input[type="phone"]').mask("+7 (999) 999-99-99");
