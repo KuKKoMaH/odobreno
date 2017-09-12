@@ -8,6 +8,7 @@ function build (cb) {
     'css',
     'html',
     'js',
+    'images',
     // 'copy',
     cb
   );
