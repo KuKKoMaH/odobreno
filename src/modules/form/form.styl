@@ -108,6 +108,8 @@
       background: #C5DCC6
 
   &__checkbox
+    position: relative
+
     input
       display: none
 
@@ -115,14 +117,18 @@
       background-image: url(sprite-checkox-checked.svg)
 
     label
-      display: inline-block
+      display: block
       vertical-align: middle
       color: #898989
       font-size: 13px
-      line-height: 20px
+      line-height: 18px
+      padding-left: 25px
+      margin-top: 20px
       &:before
         content: ''
         display: inline-block
-        vertical-align: sub
+        position: absolute
+        left: 0
+        top: 0
         background-image: url(sprite-checkox.svg)
         margin-right: 15px

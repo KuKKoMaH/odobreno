@@ -49,7 +49,19 @@ include ../form/form
         .docs__item
           | Договор 2017.doc
           button.docs__delete
-
+    .form__checkbox
+      input(type='checkbox' id='form-1')
+      label(for='form-1') Собственником является юридическое лицо
+    .form__checkbox
+      input(type='checkbox' id='form-2')
+      label(for='form-2') Собственником является несовершеннолетнее лицо
+    .form__checkbox
+      input(type='checkbox' id='form-3')
+      label(for='form-3') Объект недвижимости был приобретен продавцом в период брака на основании возмездной сделки
+    .docs__row
+      .docs__wrapper
+      .docs__aside
+        button.form__button Готово
 
   //.form__row
     //  .form__docs
