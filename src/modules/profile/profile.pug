@@ -1,11 +1,16 @@
 mixin profile()
   .profile
+    .profile__logo
+    .profile__menu
+      .profile__title Личный кабинет
+      a.profile__button(href='#') Заказать
+      button.profile__logout Выйти
     .profile__wrapper
-      .profile__logo
       .profile__info
         .profile__avatar: img(src='modules/profile/avatar.jpg')
-        .profile__name Иванов Иван
-        .profile__text Что здесь должно находиться?
+        .profile__profile
+          .profile__name Иванов Иван
+          .profile__text Что здесь должно находиться?
       table.profile__stats
         tbody
           tr

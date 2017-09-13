@@ -1,26 +1,6 @@
+include ../table/table
+
 .registry
   .w
-    .registry__container
-      .registry__title
-        .registry__number №
-        .registry__address Адрес квартиры
-        .registry__date Срок действия
-        .registry__certificate № Сертификата
-
-      //for i in [1,2]
-      for i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-        .registry__row
-          .registry__cell.registry__number
-            .registry__label №
-            .registry__value 213
-          .registry__cell.registry__address
-            .registry__label Адрес квартиры
-            .registry__value Москва, ул.Фридриха Энгельса 75 стр.11 кв.200
-          .registry__cell.registry__date
-            .registry__label Срок действия
-            .registry__value 19 июля 2017
-          .registry__cell.registry__certificate
-            .registry__label № Сертификата
-            .registry__value ВА - 237М
-
+    +table()
     include ../pagination/pagination

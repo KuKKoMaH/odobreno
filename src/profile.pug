@@ -2,7 +2,9 @@ extends pug/_layout
 include modules/popup/popup
 include modules/menu/menu
 include modules/profile/profile
+include modules/table/table
 
 block body
   +profile()
+    +table()
     include modules/footer/footer
