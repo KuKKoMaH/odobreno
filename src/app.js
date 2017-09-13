@@ -1,4 +1,5 @@
 import 'jquery';
+import SmoothScroll from 'smooth-scroll';
 import 'owl.carousel';
 import 'magnific-popup/dist/jquery.magnific-popup.js';
 import 'jquery.maskedinput/src/jquery.maskedinput';
@@ -9,5 +10,5 @@ import './modules/works/works';
 import './modules/last/last';
 import './modules/form/form';
 
-$('input[type="phone"]').mask("+7 (999) 999-99-99");
-
+// $('input[type="phone"]').mask("+7 (999) 999-99-99");
+new SmoothScroll('a[href*="#"]');

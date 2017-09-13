@@ -2,8 +2,9 @@ mixin input(placeholder, search, hasSuggest)
   .input(class=search && 'input--search')
     input.input__input(value='' required)&attributes(attributes)
     label.input__label= placeholder
-    if(hasSuggest)
-      .input__suggestions
+    .input__error
+    //if(hasSuggest)
+    //  .input__suggestions
 
     if (block)
       block

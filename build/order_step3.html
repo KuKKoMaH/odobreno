@@ -159,12 +159,18 @@
                 <div class="input">
                   <input class="input__input" value="" required="" type="phone">
                   <label class="input__label">Телефон</label>
+                  <div class="input__error"></div>
+                  <!--if(hasSuggest)-->
+                  <!--  .input__suggestions-->
                 </div>
           </div>
           <div class="popup__input">
                 <div class="input">
                   <input class="input__input" value="" required="" type="password">
                   <label class="input__label">Пароль</label>
+                  <div class="input__error"></div>
+                  <!--if(hasSuggest)-->
+                  <!--  .input__suggestions-->
                 </div>
           </div>
           <input class="button button--block" type="submit" value="Войти">
@@ -173,6 +179,9 @@
       </div>
     </div>
   </body>
-  <script>var API_KEY = "fdd27007fe8069d376aa269885162a16ef0e55d4";</script>
+  <script>
+    var SUGGEST_KEY = "fdd27007fe8069d376aa269885162a16ef0e55d4";
+    var API_URL = 'https://test-odobreno.srg-it.ru/';
+  </script>
   <script src="js/app.js"></script>
 </html>

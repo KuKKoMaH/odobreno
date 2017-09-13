@@ -1,79 +1,70 @@
-function isParentNode (element, parent) {
-  let el = element;
-  do {
-    if (el === parent) return true;
-    el = el.parentElement;
-  } while (el);
-  return false;
-}
+import 'suggestions-jquery';
 
-const generateSuggest = suggest => $(`<div class="input__suggest">${suggest.value}</div>`);
-
-export class Input {
-  constructor ({ $el, onSelect, searchConfig }) {
-    this.onSelect = onSelect;
+export default class Input {
+  constructor ({ $el, type, onSelect, validator }) {
+    this.validator = validator;
+    this.$el = $el;
     this.$input = $el.find('.input__input');
-    this.$suggestions = $el.find('.input__suggestions');
-    this.parent = this.$input.parent()[0];
-    this.$body = $(document.body);
-    this.searchConfig = searchConfig;
+    this.$error = $el.find('.input__error');
 
+    this.dirty = false;
+    this.errors = [];
+
+    this.validate = this.validate.bind(this);
     this.onInput = this.onInput.bind(this);
-    this.open = this.open.bind(this);
 
+    if (type === 'suggestions') {
+      this.$input = $el.find('input').suggestions({
+        autoSelectFirst: true,
+        addon:           'none',
+        token:           SUGGEST_KEY,
+        type:            "ADDRESS",
+        bounds:          "city-house",
+        onSelect:        (suggest) => {
+          if (onSelect) onSelect(suggest);
+          this.validate();
+        }
+      });
+    }
+
+    if (type === 'phone') {
+      this.$input.mask("+7 (999) 999-99-99", {
+        completed: this.validate
+      });
+    }
+
+    this.$input.on('blur', this.validate);
     this.$input.on('input', this.onInput);
-    this.$input.on('focus', this.open);
   }
 
   onInput (e) {
-    this.getAddress(e.target.value, (suggestions) => {
-      const $items = suggestions.map((suggest) => {
-        const $el = generateSuggest(suggest);
-        $el.on('click', () => {
-          if (this.onSelect) this.onSelect(suggest);
-          this.$input.val(suggest.value);
-          this.close();
-          this.$suggestions.html('');
-        });
-        return $el;
-      });
-      this.$suggestions.html($items);
-    });
+    if (this.dirty) this.validate();
   }
 
-  open () {
-    this.$suggestions.addClass('input__suggestions--active');
+  validate () {
+    this.dirty = true;
 
-    this.$body
-      .one('mousedown touchstart', (e) => {
-        if (!isParentNode(e.target, this.parent)) this.close();
-      })
-      .on('keydown.input', (e) => {
-        if (e.key === 'Tab') this.close();
-      });
+    const val = this.$input.val();
+    console.log(val);
+    this.errors = [];
+    for (const message in this.validator) {
+      if (!this.validator[message](val)) this.errors.push(message);
+    }
+
+    if (this.errors.length) {
+      this.$el.addClass('input--error');
+      this.$error.html(this.errors.join(', '));
+    } else {
+      this.$el.removeClass('input--error');
+      this.$error.html('');
+    }
   }
 
-  close () {
-    this.$body.off('keydown.input');
-    this.$suggestions.removeClass('input__suggestions--active');
+  getValue () {
+    return this.$input.val();
   }
 
-  getAddress (query, cb) {
-    $.ajax({
-      method:      'POST',
-      url:         'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address',
-      headers:     {
-        'Accept':        'application/json',
-        'Authorization': `Token ${API_KEY}`,
-      },
-      contentType: 'application/json',
-      data:        JSON.stringify({
-        ...this.searchConfig,
-        query,
-        count:      5,
-      }),
-      dataType:    'json',
-      success:     (res) => cb(res.suggestions),
-    });
+  isValid () {
+    return !this.errors.length;
   }
 }
