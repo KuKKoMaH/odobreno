@@ -41,7 +41,10 @@
   },
   "dependencies": {
     "baron": "^2.3.1",
+    "blueimp-file-upload": "^9.19.1",
     "bootstrap-datepicker": "^1.7.1",
+    "dropzone": "^5.1.1",
+    "fine-uploader": "^5.15.0",
     "imagemin-mozjpeg": "^6.0.0",
     "imagemin-pngquant": "^5.0.1",
     "jquery": "^3.2.1",

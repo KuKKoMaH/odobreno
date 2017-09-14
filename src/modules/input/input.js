@@ -1,7 +1,7 @@
 import 'suggestions-jquery';
 
 export default class Input {
-  constructor ({ $el, type, onSelect, validator }) {
+  constructor({ $el, type, onSelect, validator }) {
     this.validator = validator;
     this.$el = $el;
     this.$input = $el.find('.input__input');
@@ -18,8 +18,8 @@ export default class Input {
         autoSelectFirst: true,
         addon:           'none',
         token:           SUGGEST_KEY,
-        type:            "ADDRESS",
-        bounds:          "city-house",
+        type:            'ADDRESS',
+        bounds:          'city-house',
         onSelect:        (suggest) => {
           if (onSelect) onSelect(suggest);
           this.validate();
@@ -28,8 +28,20 @@ export default class Input {
     }
 
     if (type === 'phone') {
-      this.$input.mask("+7 (999) 999-99-99", {
+      this.$input.mask('+7 (999) 999-99-99', {
         completed: this.validate
+      });
+    }
+
+    if (type === 'date') {
+      require.ensure([], () => {
+        require('bootstrap-datepicker');
+        require('bootstrap-datepicker/dist/locales/bootstrap-datepicker.ru.min');
+        this.$input.datepicker({
+          language:  'ru',
+          format:    'dd.mm.yyyy',
+          autoclose: true
+        }).on('changeDate', this.validate);
       });
     }
 
@@ -37,11 +49,11 @@ export default class Input {
     this.$input.on('input', this.onInput);
   }
 
-  onInput (e) {
+  onInput(e) {
     if (this.dirty) this.validate();
   }
 
-  validate () {
+  validate() {
     this.dirty = true;
 
     const val = this.$input.val();
@@ -60,11 +72,11 @@ export default class Input {
     }
   }
 
-  getValue () {
+  getValue() {
     return this.$input.val();
   }
 
-  isValid () {
+  isValid() {
     return !this.errors.length;
   }
 }

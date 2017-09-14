@@ -35,26 +35,22 @@
               <div class="form__title">3. загрузка документов</div>
             </div>
             <div class="form__body">
-              <form action="order_step3.html" novalidate="order_step3.html">
+              <form id="form-order" action="order_step3.html" novalidate="order_step3.html">
                 <div class="form__order">Заказ № 3333</div>
                 <div class="form__label">Введите данные объекта</div>
                 <div class="form__row">
                   <div class="form__address">
                         <div class="input">
-                          <input class="input__input" value="" required="">
+                          <input class="input__input" value="" required="" id="form-address">
                           <label class="input__label">Адрес</label>
                           <div class="input__error"></div>
-                          <!--if(hasSuggest)-->
-                          <!--  .input__suggestions-->
                         </div>
                   </div>
                   <div class="form__apart">
                         <div class="input">
-                          <input class="input__input" value="" required="">
+                          <input class="input__input" value="" required="" id="form-flat">
                           <label class="input__label">Квартира</label>
                           <div class="input__error"></div>
-                          <!--if(hasSuggest)-->
-                          <!--  .input__suggestions-->
                         </div>
                   </div>
                 </div>
@@ -62,63 +58,55 @@
                 <div class="form__row">
                   <div class="form__half">
                         <div class="input">
-                          <input class="input__input" value="" required="">
+                          <input class="input__input" value="" required="" id="form-name">
                           <label class="input__label">Фамилия</label>
                           <div class="input__error"></div>
-                          <!--if(hasSuggest)-->
-                          <!--  .input__suggestions-->
                         </div>
                   </div>
                   <div class="form__half">
                         <div class="input">
-                          <input class="input__input" value="" required="">
+                          <input class="input__input" value="" required="" id="form-surname">
                           <label class="input__label">Имя</label>
                           <div class="input__error"></div>
-                          <!--if(hasSuggest)-->
-                          <!--  .input__suggestions-->
                         </div>
                   </div>
                 </div>
                 <div class="form__row">
                   <div class="form__half">
                         <div class="input">
-                          <input class="input__input" value="" required="">
+                          <input class="input__input" value="" required="" id="form-patronymic">
                           <label class="input__label">Отчество</label>
                           <div class="input__error"></div>
-                          <!--if(hasSuggest)-->
-                          <!--  .input__suggestions-->
                         </div>
                   </div>
                   <div class="form__half">
                         <div class="input">
-                          <input class="input__input" value="" required="" type="phone">
+                          <input class="input__input" value="" required="" type="phone" id="form-phone">
                           <label class="input__label">Номер телефона</label>
                           <div class="input__error"></div>
-                          <!--if(hasSuggest)-->
-                          <!--  .input__suggestions-->
                         </div>
                   </div>
                 </div>
                 <div class="form__row">
                   <div class="form__half">
-                    <div class="form__label">Введите данные объекта</div>
+                    <div class="form__label">Время показа объекта</div>
                     <div class="form__row">
                       <div class="form__half">
                             <div class="input">
-                              <input class="input__input form__date" value="" required="">
+                              <input class="input__input" value="" required="" id="form-date">
                               <label class="input__label">Дата</label>
                               <div class="input__error"></div>
-                              <!--if(hasSuggest)-->
-                              <!--  .input__suggestions-->
                             </div>
                       </div>
                       <div class="form__half">
-                            <div class="input">
-                              <input class="input__input" value="" required="">
+                            <div class="input input--select">
+                              <select class="input__select">
+                                <option value="FROM_9_TO_12">С 9 до 12</option>
+                                <option value="FROM_12_TO_16">С 12 до 16</option>
+                                <option value="FROM_16_TO_19">С 16 до 19</option>
+                              </select>
                               <label class="input__label">Время</label>
                               <div class="input__error"></div>
-                              <!--if(hasSuggest)-->
-                              <!--  .input__suggestions-->
                             </div>
                       </div>
                     </div>
@@ -127,11 +115,9 @@
                     <div class="form__label">Комментарий к заказу</div>
                     <div class="form__row">
                           <div class="input">
-                            <input class="input__input" value="" required="">
+                            <input class="input__input" value="" required="" id="form-comment">
                             <label class="input__label">Введите ваш коментарий</label>
                             <div class="input__error"></div>
-                            <!--if(hasSuggest)-->
-                            <!--  .input__suggestions-->
                           </div>
                     </div>
                   </div>
@@ -174,8 +160,6 @@
                           <input class="input__input" value="" required="" type="phone">
                           <label class="input__label">Телефон</label>
                           <div class="input__error"></div>
-                          <!--if(hasSuggest)-->
-                          <!--  .input__suggestions-->
                         </div>
                 </div>
                 <div class="popup__input">
@@ -183,8 +167,6 @@
                           <input class="input__input" value="" required="" type="password">
                           <label class="input__label">Пароль</label>
                           <div class="input__error"></div>
-                          <!--if(hasSuggest)-->
-                          <!--  .input__suggestions-->
                         </div>
                 </div>
                       <input class="button button--block" type="submit" value="Войти">

@@ -2,11 +2,6 @@ import Input from '../input/input';
 import { createOrder } from '../../js/api';
 
 let currentAddress = null;
-const $phone = new Input({
-  $el:       $('.header__phone .input'),
-  type:      'phone',
-  validator: { 'Введите телефон': val => !!val },
-});
 
 const $address = new Input({
   $el:       $('.header__address .input'),
@@ -20,7 +15,14 @@ const $flat = new Input({
   validator: { 'Введите номер': (val) => !!val },
 });
 
+const $phone = new Input({
+  $el:       $('.header__phone .input'),
+  type:      'phone',
+  validator: { 'Введите телефон': val => !!val },
+});
+
 const fields = [$address, $flat, $phone];
+const $button = $('.header__submit button');
 
 $('.header__form').on('submit', (e) => {
   e.preventDefault();
@@ -39,6 +41,12 @@ $('.header__form').on('submit', (e) => {
       lon:         currentAddress.data.geo_lon,
     },
   };
-
-  createOrder(data);
+  $button.attr('disabled', 'disabled');
+  createOrder(data).then(
+    (res) => {
+      // success
+      $button.removeAttr('disabled');
+    },
+    err => $button.removeAttr('disabled')
+  );
 });

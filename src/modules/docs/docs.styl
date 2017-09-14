@@ -34,11 +34,13 @@
     text-align: justify
 
   &__upload
+    position: relative
     text-align: center
     color: #227eba
     font-size: 15px
     margin-bottom: 30px
     cursor: pointer
+    overflow: hidden
 
     &:before
       content: ''
@@ -46,6 +48,14 @@
       vertical-align: middle
       margin: 0 auto 15px
       background-image: url(sprite-upload.svg)
+
+  &__input
+    position: absolute
+    right: 0
+    top: 0
+    width: 200%
+    height: 200%
+    opacity: 0
 
   &__item
     font-size: 13px

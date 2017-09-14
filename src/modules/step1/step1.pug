@@ -1,29 +1,32 @@
 include ../form/form
 
 +form(0)
-  form(action='order_step3.html' novalidate)
+  form#form-order(action='order_step3.html' novalidate)
     .form__order Заказ № 3333
     .form__label Введите данные объекта
     .form__row
-      .form__address: +input('Адрес', false, true)
-      .form__apart: +input('Квартира', false, true)
+      .form__address: +input('Адрес')(id='form-address')
+      .form__apart: +input('Квартира')(id='form-flat')
     .form__label Введите ваши данные
     .form__row
-      .form__half: +input('Фамилия')
-      .form__half: +input('Имя')
+      .form__half: +input('Фамилия')(id='form-name')
+      .form__half: +input('Имя')(id='form-surname')
     .form__row
-      .form__half: +input('Отчество')
-      .form__half: +input('Номер телефона')(type='phone')
+      .form__half: +input('Отчество')(id='form-patronymic')
+      .form__half: +input('Номер телефона')(type='phone' id='form-phone')
     .form__row
       .form__half
-        .form__label Введите данные объекта
+        .form__label Время показа объекта
         .form__row
-          .form__half: +input('Дата')(class='form__date')
-          .form__half: +input('Время')
+          .form__half: +input('Дата')(id='form-date')
+          .form__half: +input('Время', false, true)(id='form-time')
+            option(value='FROM_9_TO_12') С 9 до 12
+            option(value='FROM_12_TO_16') С 12 до 16
+            option(value='FROM_16_TO_19') С 16 до 19
       .form__half
         .form__label Комментарий к заказу
         .form__row
-          +input('Введите ваш коментарий')
+          +input('Введите ваш коментарий')(id='form-comment')
     .form__checkbox
       input(type='checkbox' id='form-offer')
       label(for='form-offer') Текст для оферты

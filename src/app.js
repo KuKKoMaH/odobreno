@@ -8,7 +8,8 @@ import './modules/header/header';
 import './modules/menu/menu';
 import './modules/works/works';
 import './modules/last/last';
-import './modules/form/form';
+import './modules/step1/step1';
+import './modules/docs/docs';
 
 // $('input[type="phone"]').mask("+7 (999) 999-99-99");
 new SmoothScroll('a[href*="#"]');
