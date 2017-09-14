@@ -45,7 +45,7 @@ export default class Input {
     this.dirty = true;
 
     const val = this.$input.val();
-    console.log(val);
+    // console.log(val);
     this.errors = [];
     for (const message in this.validator) {
       if (!this.validator[message](val)) this.errors.push(message);

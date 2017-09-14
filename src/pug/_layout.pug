@@ -1,4 +1,4 @@
-include ../modules/popup/popup
+
 
 doctype html
 html
@@ -14,12 +14,7 @@ html
   body
     block body
     .popups
-      +popup()#popup-register
-        .popup__text Войти в личный кабинет
-        form(novalidate)
-          .popup__input: +input('Телефон')(type='phone')
-          .popup__input: +input('Пароль')(type='password')
-          +button('input', true)(value='Войти')
+      include ../modules/popup-login/popup-login
 
   script.
     var SUGGEST_KEY = "fdd27007fe8069d376aa269885162a16ef0e55d4";
