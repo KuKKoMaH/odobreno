@@ -1,9 +1,6 @@
 import stringify from 'qs/lib/stringify';
-// import globalConfig from 'config.json';
 
-const cache = {};
-
-export default function fetch (method = 'GET', url, body, config = {}) {
+export default function fetch({ method = 'GET', url, data, config = {} }) {
   const upperMethod = method.toString().toUpperCase();
   let fullUrl = API_URL + url;
 
@@ -12,33 +9,20 @@ export default function fetch (method = 'GET', url, body, config = {}) {
   };
 
   if (upperMethod === 'GET' || upperMethod === 'DELETE') {
-    const strBody = stringify(body);
+    const strBody = stringify(data);
     if (strBody.length) {
-      fullUrl += `?${stringify(body)}`;
+      fullUrl += `?${stringify(data)}`;
     }
-  } else if (typeof body === 'object' && body !== null) {
-    params.body = JSON.stringify(body);
+  } else if (typeof data === 'object' && data !== null) {
+    params.body = JSON.stringify(data);
   } else {
-    params.body = body;
+    params.body = data;
   }
 
   params.headers = {
     'Content-Type': 'application/json',
   };
+  params.url = fullUrl;
 
-  // if (config.token || state.token) params.headers['access-token'] = config.token || state.token;
-  // if (config.guid) params.headers.guid = config.guid;
-  // if (config.cookies) params.credentials = 'include';
-
-  return window.fetch(fullUrl, params).then((result) => {
-    const contentType = result.headers.get('Content-Type');
-    const res = (contentType && contentType.toLowerCase().indexOf('application/json') !== -1)
-      ? result.json()
-      : result.text();
-
-    const status = result.status;
-    return (status >= 200 && status < 300)
-      ? res
-      : res.then(error => Promise.reject({ url, result, status, error }));
-  });
+  return $.ajax(params);
 }

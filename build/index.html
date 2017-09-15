@@ -10,7 +10,7 @@
     <!--link(rel="shortcut icon" href="/favicon.ico")-->
   </head>
   <body>
-    <header class="header">
+    <header class="header" id="header">
           <div class="menu">
             <div class="w"><a class="menu__logo" href=".."></a>
               <button class="menu__hamburger"></button>
@@ -40,17 +40,15 @@
           <div class="header__form-title"><span>Оставить заявку</span> на проверку недвижимости</div>
           <form class="header__form" novalidate="">
             <div class="header__form-input header__address">
-                  <div class="input input--select">
-                    <select class="input__select">
-                    </select>
+                  <div class="input">
+                    <input class="input__input" value="" required="">
                     <label class="input__label">Адрес</label>
                     <div class="input__error"></div>
                   </div>
             </div>
             <div class="header__form-input header__flat">
-                  <div class="input input--select">
-                    <select class="input__select">
-                    </select>
+                  <div class="input">
+                    <input class="input__input" value="" required="">
                     <label class="input__label">Квартира</label>
                     <div class="input__error"></div>
                   </div>
@@ -170,7 +168,7 @@
           <div class="works__text">Сертификат «Одобрено» высылаем на Вашу электронную почту</div>
         </div>
       </div>
-          <a class="button" href="order_step1.html" type="order_step1.html">Заполнить заявку
+          <a class="button" href="#header" type="submit">Заполнить заявку
           </a>
     </section>
     <div class="advantages" id="advantages">
@@ -212,7 +210,7 @@
           </div>
         </div>
       </div>
-          <a class="button" href="order_step1.html" type="order_step1.html">заказать «одобрено»
+          <a class="button" href="#header" type="submit">заказать «одобрено»
           </a>
     </div>
     <footer class="footer footer--line">

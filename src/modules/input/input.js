@@ -20,6 +20,7 @@ export default class Input {
         token:           SUGGEST_KEY,
         type:            'ADDRESS',
         bounds:          'city-house',
+        mobileWidth:     767,
         onSelect:        (suggest) => {
           if (onSelect) onSelect(suggest);
           this.validate();

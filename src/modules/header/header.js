@@ -42,11 +42,8 @@ $('.header__form').on('submit', (e) => {
     },
   };
   $button.attr('disabled', 'disabled');
-  createOrder(data).then(
-    (res) => {
-      // success
-      $button.removeAttr('disabled');
-    },
-    err => $button.removeAttr('disabled')
-  );
+  createOrder(data)
+    .done(data => console.log(data))
+    .fail((jqXHR, text, err) => console.log(text, err))
+    .always(() => $button.removeAttr('disabled'));
 });
