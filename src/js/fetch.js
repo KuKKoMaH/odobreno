@@ -1,6 +1,6 @@
 import stringify from 'qs/lib/stringify';
 
-export default function fetch({ method = 'GET', url, data, config = {} }) {
+export default function fetch({ method = 'GET', url, data, options = {} }) {
   const upperMethod = method.toString().toUpperCase();
   let fullUrl = API_URL + url;
 
@@ -14,14 +14,15 @@ export default function fetch({ method = 'GET', url, data, config = {} }) {
       fullUrl += `?${stringify(data)}`;
     }
   } else if (typeof data === 'object' && data !== null) {
-    params.body = JSON.stringify(data);
+    params.data = JSON.stringify(data);
   } else {
-    params.body = data;
+    params.data = data;
   }
 
   params.headers = {
     'Content-Type': 'application/json',
   };
+  if(options.token) params.headers.token = options.token;
   params.url = fullUrl;
 
   return $.ajax(params);

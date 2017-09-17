@@ -106,6 +106,10 @@
 
     &:disabled
       background: #C5DCC6
+      border-color: #C5DCC6
+
+      &:hover
+        color: #ffffff
 
   &__checkbox
     position: relative
@@ -132,3 +136,53 @@
         top: 0
         background-image: url(sprite-checkox.svg)
         margin-right: 15px
+
+  &__form,
+  &__error
+    display: none
+
+  &__error
+    text-align: center
+    color: #e94c36
+
+  &__spinner
+    margin: 60px auto;
+    font-size: 10px;
+    position: relative;
+    text-indent: -9999em;
+    border-top: 1.1em solid rgba(#505050, 0.2);
+    border-right: 1.1em solid rgba(#505050, 0.2);
+    border-bottom: 1.1em solid rgba(#505050, 0.2);
+    border-left: 1.1em solid #505050;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load8 1.1s infinite linear;
+    animation: load8 1.1s infinite linear;
+
+    &,
+    &:after
+      border-radius: 50%
+      width: 10em
+      height: 10em
+
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

@@ -2,7 +2,7 @@ mixin input(placeholder, search, select)
   - var className = 'input' + (search ? ' input--search' : '') + (select ? ' input--select' : '')
   div(class=className)
     if(select)
-      select.input__select
+      select.input__select(required)&attributes(attributes)
         if (block)
           block
     else

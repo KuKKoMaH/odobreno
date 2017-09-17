@@ -6,18 +6,19 @@ mixin table( )
       .table__date Срок действия
       .table__certificate № Сертификата
   
-    //for i in [1,2]
-    for i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+    .table__rows
+
+    .table__template
       .table__row
         .table__cell.table__number
           .table__label №
-          .table__value 213
+          .table__value {{i}}
         .table__cell.table__address
           .table__label Адрес квартиры
-          .table__value Москва, ул.Фридриха Энгельса 75 стр.11 кв.200
+          .table__value {{address}}
         .table__cell.table__date
           .table__label Срок действия
-          .table__value 19 июля 2017
+          .table__value {{expirationDate}}
         .table__cell.table__certificate
           .table__label № Сертификата
-          .table__value ВА - 237М
+          .table__value {{id}}

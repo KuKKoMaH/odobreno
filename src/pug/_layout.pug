@@ -1,5 +1,3 @@
-
-
 doctype html
 html
   head
@@ -15,8 +13,11 @@ html
     block body
     .popups
       include ../modules/popup-login/popup-login
+      include ../modules/popup-confirm/popup-confirm
 
   script.
+    var JS_PUBLIC_PATH = 'js/';
     var SUGGEST_KEY = "fdd27007fe8069d376aa269885162a16ef0e55d4";
     var API_URL = 'https://test-odobreno.srg-it.ru/';
+    var ITEMS_PER_PAGE = 20;
   script(src='js/app.js')

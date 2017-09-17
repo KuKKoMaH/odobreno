@@ -1,10 +1,10 @@
 import 'suggestions-jquery';
 
 export default class Input {
-  constructor({ $el, type, onSelect, validator }) {
+  constructor ({ $el, type, onSelect, validator }) {
     this.validator = validator;
     this.$el = $el;
-    this.$input = $el.find('.input__input');
+    this.$input = $el.find('.input__input, .input__select');
     this.$error = $el.find('.input__error');
 
     this.dirty = false;
@@ -50,11 +50,11 @@ export default class Input {
     this.$input.on('input', this.onInput);
   }
 
-  onInput(e) {
+  onInput (e) {
     if (this.dirty) this.validate();
   }
 
-  validate() {
+  validate () {
     this.dirty = true;
 
     const val = this.$input.val();
@@ -73,11 +73,11 @@ export default class Input {
     }
   }
 
-  getValue() {
+  getValue () {
     return this.$input.val();
   }
 
-  isValid() {
+  isValid () {
     return !this.errors.length;
   }
 }

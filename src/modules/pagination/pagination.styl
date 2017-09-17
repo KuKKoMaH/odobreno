@@ -36,10 +36,10 @@
 
   &__prev,
   &__next
-    cursor: pointer
+    //cursor: pointer
     margin: 0 25px
-
-
+    opacity: 0
+    pointer-events: none
 
   &__prev
     &:before
@@ -54,3 +54,8 @@
     &:hover
       &:after
         transform: translateX(2px)
+
+  &__visible
+    opacity: 1
+    cursor: pointer
+    pointer-events: auto

@@ -1,13 +1,9 @@
 .header
-  height: 760px
+  //min-height: 760px
   background: url(header-bg.jpg)
   background-size: cover
   color: #fff
   padding-top: 30px
-
-  @media (max-width: $breakpoint-md - 1)
-    height: auto
-    padding-bottom: 35px
 
   @media (max-width: $breakpoint-sm - 1)
     padding-bottom: 0
@@ -53,12 +49,10 @@
     font-weight: 300
     font-size: 25px
     margin: 0
-    text-indent: -20px
     line-height: 1.55
 
     @media (max-width: $breakpoint-sm - 1)
       font-size: 20px
-      text-indent: 0
 
   &__form
     //font-size: 0
@@ -74,17 +68,16 @@
       background: #fff
       box-shadow: 0 15px 16px rgba(#1A3365, .27)
       border-radius: 6px
+      margin-bottom: 40px
 
       @media (max-width: $breakpoint-lg - 1)
         padding: 30px 35px
-
-      @media (max-width: $breakpoint-md - 1)
         margin-top: 50px
 
       @media (max-width: $breakpoint-sm - 1)
         padding 20px 10px
         border-radius: 0
-
+        margin-bottom: 0px
 
     &-title
       color: #2973a8
@@ -110,6 +103,11 @@
         display: block
         max-width: 100% !important
         margin-bottom: 22px
+
+    &-error
+      font-size: 13px
+      font-weight: 300
+      color: #e94c36
 
   &__flat
     max-width: 110px

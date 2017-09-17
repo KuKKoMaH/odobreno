@@ -24,7 +24,8 @@
       border: 1px solid #CDD6DC
 
     &:focus ~ .input__label,
-    &:valid ~ .input__label
+    &:valid ~ .input__label,
+    &:disabled ~ .input__label
       top: 10px
       font-size: 12px
       color: #628aa1
@@ -52,28 +53,6 @@
     color: #4a4a4a
     font-size: 13px
 
-  //&__suggestions
-  //  font-size: 13px
-  //  position: absolute
-  //  background: #c1d8e5
-  //  color: #628aa1
-  //  width: 100%
-  //  margin-top: -3px
-  //  border-radius: 0 0 3px 3px
-  //  display: none
-  //  z-index: 100
-  //
-  //  &--active
-  //    display: block
-  //
-  //&__suggest
-  //  padding: 4px 8px
-  //  anim()
-  //  cursor: pointer
-  //
-  //  &:hover
-  //    background: #F0F5F8
-
   &--search
 
     &:after
@@ -93,19 +72,21 @@
         border-color: transparent
 
   &--error
-    .input__input
+    .input__input,
+    .input__select
       border: 1px solid #E94C36
       color: #e94c36
+
     .input__label
       color: #e94c36
 
-  //&--select
-  //  width: 100%
-  //  background: #F0F5F8
-  //  border: 1px solid transparent
-  //  outline: 0
-  //  font-size: 16px
-  //  line-height: 1.2
-  //  padding: 30px 15px 13px
-  //  border-radius: 4px
-  //  color: #628aa1
+//&--select
+//  width: 100%
+//  background: #F0F5F8
+//  border: 1px solid transparent
+//  outline: 0
+//  font-size: 16px
+//  line-height: 1.2
+//  padding: 30px 15px 13px
+//  border-radius: 4px
+//  color: #628aa1

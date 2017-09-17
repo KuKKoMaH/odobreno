@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const DynamicPublicPathPlugin = require("dynamic-public-path-webpack-plugin");
 
 function createConfig (env) {
   var isProduction, webpackConfig;
@@ -11,11 +12,11 @@ function createConfig (env) {
   isProduction = env === 'production';
 
   webpackConfig = {
-    entry:   './src/app.js',
+    entry:   { app: './src/app.js' },
     output:  {
       path:       path.join(__dirname, '../../build/js'),
       filename:   'app.js',
-      publicPath: 'js/'
+      publicPath: 'http://odobrenovbanke.ru'
     },
     devtool: isProduction ? '#source-map' : '#cheap-module-eval-source-map',
     module:  {
@@ -53,6 +54,10 @@ function createConfig (env) {
       //     printWidth: 80,
       //     tabWidth: 4
       // }),
+      new DynamicPublicPathPlugin({
+        externalGlobal: 'window.JS_PUBLIC_PATH',
+        chunkName:      'app'
+      }),
       new webpack.ProvidePlugin({
         $:               'jquery',
         jQuery:          'jquery',
