@@ -1,16 +1,30 @@
-import Cookie from 'js-cookie';
-import { login, confirm } from './api';
+import Cookies from 'js-cookie';
+import { login, confirm, getProfile } from './api';
 
 class Auth {
   constructor () {
-    const auth = Cookie.get('auth');
+    const auth = Cookies.get('auth');
     if (auth) {
       const [token, phone] = auth.split('|');
       if (token && phone) {
         this.token = token;
         this.phone = phone;
+
+        this.profileDef = $.Deferred();
+        getProfile(token).then(
+          profile => {
+            this.profile = profile;
+            this.profileDef.resolve(profile);
+          },
+          err => this.setToken(null, null)
+        );
       }
     }
+  }
+
+  getProfile () {
+    if (this.profile) return $.Deferred.reslove(this.profile);
+    return this.profileDef;
   }
 
   auth (phone) {
@@ -21,7 +35,11 @@ class Auth {
   }
 
   setToken (phone, token) {
-    Cookie.set('auth', `${token}|${phone}`, { expires: 365 });
+    if (!phone || !token) {
+      Cookies.remove('auth');
+      return null;
+    }
+    Cookies.set('auth', `${token}|${phone}`, { expires: 365 });
     this.token = token;
     this.phone = phone;
     return token;

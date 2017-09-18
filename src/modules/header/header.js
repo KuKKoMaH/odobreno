@@ -49,7 +49,7 @@ $('.header__form').on('submit', (e) => {
 
   Auth.auth(phone)
     .then(() => {
-      createOrder(data).then((order) => (window.location.href = e.target.action + '?order=' + order.id))
+      createOrder(data, Auth.token).then((order) => (window.location.href = e.target.action + '?order=' + order.id))
     })
     .always(() => $button.removeAttr('disabled'));
 });

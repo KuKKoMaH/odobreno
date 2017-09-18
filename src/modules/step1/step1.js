@@ -1,19 +1,28 @@
 import Input from '../input/input';
-import { getOrder, updateOrder } from '../../js/api';
+import { getOrder, updateOrder, payBonusOrder } from '../../js/api';
 import { getParam } from '../../js/history';
+import Auth from '../../js/Auth';
 
 const $form = $('#form-order');
 
 if ($form.length) {
   const orderId = getParam('order');
 
-  getOrder(orderId)
-    .done((order) => {
+  $.when(
+    Auth.getProfile(),
+    getOrder(orderId, Auth.token)
+  ).then((profile, [order]) => {
       $('.form__form').show();
 
       $('#form-address').val(order.address);
       $('#form-flat').val(order.flat);
       $('#form-sellingPrice').val(order.salePrice);
+
+      $('#form-name').val(profile.name);
+      $('#form-surname').val(profile.surname);
+      $('#form-patronymic').val(profile.parentalName);
+      $('#form-phone').val(profile.phone).mask('+7 (999) 999-99-99');
+
       if (order.inspectionDate) $('#form-date').val(order.inspectionDate.reverse().join('.'));
       if (order.timeBlock) $('#form-time').val(order.timeBlock);
       $('#form-comment').val(order.comment);
@@ -48,20 +57,44 @@ if ($form.length) {
       });
 
       const fields = [$sellingPrice, $name, $surname, $patronymic, $date, $time, $comment];
-      const $button = $('.form__button');
+      const $buttons = $('.form__button');
+      const $button_pay = $('#form-pay');
+      const $button_bonus = $('#form-bonus');
       const $offer = $('#form-offer');
 
-      $button.attr('disabled', true);
-      $offer.on('change', () => $button.attr('disabled', !$offer.prop('checked')));
+      $buttons.attr('disabled', true);
+      $offer.on('change', () => {
+        $button_pay.attr('disabled', !$offer.prop('checked'));
+        if (profile.bonus > 0) $button_bonus.attr('disabled', !$offer.prop('checked'));
+      });
+
+      $button_bonus.on('click', (e) => {
+        e.preventDefault();
+        const data = collectOrder();
+        if (!data) return;
+        updateOrder(data, Auth.token)
+          .then(() => payBonusOrder(data.id, Auth.token))
+          .then(() => window.location.href = $form.attr('action') + '?order=' + data.id);
+        // ;
+      });
 
       $form.on('submit', (e) => {
         e.preventDefault();
 
-        if (!$offer.prop('checked')) return;
-        fields.forEach(field => field.validate());
-        if (fields.some(field => !field.isValid())) return;
+        const data = collectOrder();
+        if (!data) return;
 
-        const data = {
+        updateOrder(data, Auth.token)
+          .then(() => (window.location.href = $form.attr('action') + '?order=' + order.id))
+        // console.log(data);
+      });
+
+      function collectOrder () {
+        if (!$offer.prop('checked')) return null;
+        fields.forEach(field => field.validate());
+        if (fields.some(field => !field.isValid())) return null;
+
+        return {
           id:                order.id,
           inspectionDate:    $date.getValue(),
           timeBlock:         $time.getValue(),
@@ -73,11 +106,9 @@ if ($form.length) {
           acceptedAgreement: true,
         };
 
-        updateOrder(data)
-          .then(() => (window.location.href = e.target.action + '?order=' + order.id))
-        // console.log(data);
-      });
-    })
+      }
+    }
+  )
     .catch(() => $('.form__error').show())
     .always(() => $('.form__spinner').hide());
 }

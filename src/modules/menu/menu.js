@@ -1,7 +1,14 @@
-$('.menu__cabinet').magnificPopup({
-  items: {
-    src:  '#popup-register',
-    type: 'inline'
+import Auth from '../../js/Auth';
+
+$('.menu__cabinet').on('click', (e) => {
+  if (!Auth.token) {
+    e.preventDefault();
+    $.magnificPopup.open({
+      items: {
+        src:  '#popup-register',
+        type: 'inline'
+      }
+    });
   }
 });
 
@@ -15,12 +22,12 @@ $('.menu__hamburger, .menu__close').on('click', () => {
 });
 $menu.find('a').on('click', close);
 
-function close() {
+function close () {
   $menu.removeClass(activeClass);
   setTimeout(() => $menu.removeClass(visibleClass), 100);
 }
 
-function open() {
+function open () {
   $menu.addClass(visibleClass);
   requestAnimationFrame(() => $menu.addClass(activeClass));
 }

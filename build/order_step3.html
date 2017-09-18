@@ -12,6 +12,7 @@
   <body>
     <div class="menu menu--full">
       <div class="w"><a class="menu__logo" href=".."></a>
+        <div class="menu__vtb"></div>
         <button class="menu__hamburger"></button>
         <div class="menu__wrapper">
           <button class="menu__close"></button>
@@ -21,9 +22,7 @@
             <li><a href="#advantages">Наши преимущества</a></li>
           </ul>
           <div class="menu__item"><a class="menu__button" href="order_step1.html">ЗАКАЗАТЬ</a></div>
-          <div class="menu__item">
-            <button class="menu__cabinet">Личный кабинет</button>
-          </div>
+          <div class="menu__item"><a class="menu__cabinet" href="/profile">Личный кабинет</a></div>
         </div>
       </div>
     </div>
@@ -35,7 +34,9 @@
               <div class="form__title form__title--active">3. загрузка документов</div>
             </div>
             <div class="form__body">
-              <form action="order_done.html" novalidate="order_done.html">
+              <div class="form__spinner"></div>
+              <div class="form__error">Заказ не найден</div>
+              <form class="form__form" id="form-docs" action="order_done.html" novalidate="order_done.html">
                 <div class="form__order">Заказ № 3333</div>
                 <div class="docs__row">
                   <div class="docs__wrapper">
@@ -100,45 +101,24 @@
                   </div>
                 </div>
                 <div class="form__checkbox">
-                  <input type="checkbox" id="form-1">
-                  <label for="form-1">Собственником является юридическое лицо</label>
+                  <input type="checkbox" id="form-legalPersonOwner">
+                  <label for="form-legalPersonOwner">Собственником является юридическое лицо</label>
                 </div>
                 <div class="form__checkbox">
-                  <input type="checkbox" id="form-2">
-                  <label for="form-2">Собственником является несовершеннолетнее лицо</label>
+                  <input type="checkbox" id="form-minorOwner">
+                  <label for="form-minorOwner">Собственником является несовершеннолетнее лицо</label>
                 </div>
                 <div class="form__checkbox">
-                  <input type="checkbox" id="form-3">
-                  <label for="form-3">Объект недвижимости был приобретен продавцом в период брака на основании возмездной сделки</label>
+                  <input type="checkbox" id="form-onerousTransaction">
+                  <label for="form-onerousTransaction">Объект недвижимости был приобретен продавцом в период брака на основании возмездной сделки</label>
                 </div>
                 <div class="docs__row">
                   <div class="docs__wrapper"></div>
                   <div class="docs__aside">
-                    <button class="form__button">Готово</button>
+                    <button class="form__button" id="form-confirm">Готово</button>
                   </div>
                 </div>
               </form>
-              <!--.form__row
-              //  .form__docs
-              //    p Технические документы
-              //    ul
-              //      li Поэтажный план
-              //      li Экспликация
-              //  .form__aside: .form__upload
-              //.form__row
-              //  .form__docs
-              //    p Дополнительно
-              //    ul
-              //      li Справка и ПНД
-              //      li Выписка из домой книги и тд.
-              //  .form__aside: .form__upload
-              //.form__row
-              //  .form__docs
-              //    .form__checkbox
-              //      input(type='checkbox' id='form-news')
-              //      label(for='form-news') Хочу получать новости и специальные предложения в виде смс сообщений
-              //  .form__aside: button.form__button Готово
-              -->
             </div>
           </div>
         </div>

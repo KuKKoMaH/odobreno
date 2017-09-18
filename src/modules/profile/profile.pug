@@ -9,18 +9,21 @@ mixin profile()
       .profile__info
         .profile__avatar: img(src='modules/profile/avatar.jpg')
         .profile__profile
-          .profile__name Иванов Иван
-          .profile__text Бонусные баллы: #[span.profile__bonus 1000]
+          .profile__name
+          .profile__text Бонусные баллы: #[span.profile__bonus]
       table.profile__stats
         tbody
-          tr
-            td В процессе:
-            td.profile__count 4
-          tr
-            td Готово:
-            td.profile__count 5
-          tr
-            td Отменено:
-            td.profile__count 7
+          //tr#summary-DRAFT
+          //  td Черновик:
+          //  td.profile__count
+          //tr#summary-VERIFICATION
+          //  td Ожидает проверки документов:
+          //  td.profile__count
+          //tr#summary-WAIT_CUSTOMER_DATA
+          //  td Ожидает исправления документов покупателем:
+          //  td.profile__count
+          //tr#summary-INSPECTION
+          //  td Назначен осмотр:
+          //  td.profile__count
     if(block)
       block

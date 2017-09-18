@@ -1,5 +1,4 @@
 import fetch from './fetch';
-import Auth from './Auth';
 
 export const login = (phone) => {
   return fetch({ method: 'POST', url: 'customer/findOrCreate', data: { phone } });
@@ -9,20 +8,32 @@ export const confirm = (id, code) => {
   return fetch({ method: 'GET', url: 'customer/checkcode', data: { id, code } });
 };
 
-export const getOrder = (orderId) => {
-  return fetch({ method: 'GET', url: `order/${orderId}`, options: { token: Auth.token } });
+export const getProfile = (token) => {
+  return fetch({ method: 'GET', url: 'customer/profile', options: { token } });
 };
 
-export const getOrderList = () => {
-  return fetch({ method: 'GET', url: `order/list`, options: { token: Auth.token } });
+export const getOrder = (orderId, token) => {
+  return fetch({ method: 'GET', url: `order/${orderId}`, options: { token } });
 };
 
-export const createOrder = (data) => {
-  return fetch({ method: 'POST', url: 'order/create', data: { ...data }, options: { token: Auth.token } });
+export const getOrderList = (token) => {
+  return fetch({ method: 'GET', url: `order/list`, options: { token } });
 };
 
-export const updateOrder = (data) => {
-  return fetch({ method: 'POST', url: `order/${data.id}/appendDetails`, data, options: { token: Auth.token } });
+export const createOrder = (data, token) => {
+  return fetch({ method: 'POST', url: 'order/create', data: { ...data }, options: { token } });
+};
+
+export const updateOrder = (data, token) => {
+  return fetch({ method: 'POST', url: `order/${data.id}/appendDetails`, data, options: { token } });
+};
+
+export const payBonusOrder = (id, token) => {
+  return fetch({ method: 'POST', url: `order/${id}/payWithBonus`, options: { token } });
+};
+
+export const confirmOrder = (id, data, token) => {
+  return fetch({ method: 'POST', url: `order/${id}/updateListDetailsAndSendOrderToSRG`, data, options: { token } });
 };
 
 export const getCertificates = (query, limit, page) => {

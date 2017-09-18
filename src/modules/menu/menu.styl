@@ -1,6 +1,8 @@
 $baseClass = '.menu'
 
 {$baseClass}
+  @media (max-width: $breakpoint-sm - 1)
+    text-align: center
   &__logo
     float: left
     background-image: url(sprite-logo-white.svg)
@@ -9,6 +11,17 @@ $baseClass = '.menu'
     @media (max-width: $breakpoint-md - 1)
       float: none
       margin: 0 auto
+    @media (max-width: $breakpoint-sm - 1)
+      display: inline-block
+      vertical-align: middle
+
+  &__vtb
+    display: none
+    vertical-align: middle
+    background-image: url(../header/sprite-vtb.svg)
+    transform: scale(.5)
+    margin-left: -30px
+    margin-right: -30px
     @media (max-width: $breakpoint-sm - 1)
       display: inline-block
 
