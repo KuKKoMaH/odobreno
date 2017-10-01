@@ -1,16 +1,19 @@
 import Cookies from 'js-cookie';
-import { login, confirm, getProfile } from './api';
+import { login, confirm, getProfile, sendCode } from './api';
 
 class Auth {
   constructor () {
+    this.phone = null;
+    this.userId = null;
+
     const auth = Cookies.get('auth');
+    this.profileDef = $.Deferred();
     if (auth) {
       const [token, phone] = auth.split('|');
       if (token && phone) {
         this.token = token;
         this.phone = phone;
 
-        this.profileDef = $.Deferred();
         getProfile(token).then(
           profile => {
             this.profile = profile;
@@ -19,6 +22,8 @@ class Auth {
           err => this.setToken(null, null)
         );
       }
+    } else {
+      this.profileDef.reject('not_auth');
     }
   }
 
@@ -28,10 +33,15 @@ class Auth {
   }
 
   auth (phone) {
+    this.phone = phone;
     // if (this.token && this.phone === phone) return $.Deferred().resolve(this.token);
     return login(phone)
       .then(resp => this.showConfirmPopup(resp.id))
       .then(token => this.setToken(phone, token))
+  }
+
+  logout() {
+    this.setToken(null, null);
   }
 
   setToken (phone, token) {
@@ -51,6 +61,7 @@ class Auth {
    * @return {Promise.<string>}
    */
   showConfirmPopup (userId) {
+    this.userId = userId;
     const def = $.Deferred();
     const $popup = $('#popup-confirm');
     const $form = $popup.find('form');
@@ -81,6 +92,11 @@ class Auth {
     });
 
     return def;
+  }
+
+  resendCode() {
+    if(!this.userId || !this.phone) return;
+    return sendCode(this.userId, this.phone);
   }
 }
 

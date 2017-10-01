@@ -65,3 +65,17 @@
       background-image: url(sprite-ins.svg)
     &--tw:after
       background-image: url(sprite-tw.svg)
+
+  &__links
+    text-align: right
+
+    @media (max-width: $breakpoint-sm - 1)
+      text-align: center
+
+  &__link
+    margin-left: 8px
+    font-size: 12px
+    color: #96b6ca
+
+    &:hover
+      text-decoration: underline

@@ -52,11 +52,53 @@
     color: #505050
     margin-bottom: 17px
 
-  &__row
+  &__mark
+    display: inline-block
+    //position: relative
+
+    &:before
+      content: '?'
+      display: inline-block
+      vertical-align: middle
+      text-align: center
+      width: 22px
+      height: 22px
+      background: #f1f5f7
+      border-radius: 50%
+      color: #618aa1
+      anim()
+
+    &--active
+      &:before
+        background: #237eba
+        color: #fff
+
+      .form__mark-content
+        opacity: 1
+        pointer-events: all
+
+    &-content
+      position: absolute
+      background: #ffffff
+      border: 2px solid #237eba
+      z-index: 1000
+      padding: 28px
+      border-radius: 8px
+      opacity: 0
+      pointer-events: none
+      width: 300px
+      //top: 13px
+      //left: 13px
+      margin-top: -10px
+      margin-left: 12px
+      anim()
+
+  &__container
     display: flex
     flex-direction: row
     align-items: flex-end
-    margin: 0 -6px 22px
+    margin-left: -6px
+    margin-right: -6px
 
     @media (max-width: $breakpoint-sm - 1)
       display: block
@@ -67,6 +109,9 @@
 
       @media (max-width: $breakpoint-sm - 1)
         margin-bottom: 12px
+
+  &__row
+    margin-bottom: 22px
 
   &__apart
     max-width: 110px
@@ -99,7 +144,7 @@
     font-size: 15px
     color: #ffffff
     font-weight: bold
-    padding: 0
+    padding: 0 8px
     margin: 0 7px
     anim(.15s)
     cursor: pointer
@@ -140,6 +185,9 @@
         top: 0
         background-image: url(sprite-checkox.svg)
         margin-right: 15px
+
+      a
+        text-decoration: underline
 
   &__form,
   &__error

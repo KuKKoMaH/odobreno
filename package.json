@@ -33,6 +33,7 @@
     "gulp-stylus": "^2.6.0",
     "gulp-util": "^3.0.8",
     "gulp-watch": "^4.3.11",
+    "jquery-ui": "^1.12.1",
     "postcss-copy": "^7.1.0",
     "postcss-cssnext": "^3.0.2",
     "postcss-import": "^10.0.0",

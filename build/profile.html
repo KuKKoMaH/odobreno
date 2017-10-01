@@ -10,11 +10,9 @@
     <!--link(rel="shortcut icon" href="/favicon.ico")-->
   </head>
   <body>
-    <div class="profile">
-      <div class="profile__logo"></div>
+    <div class="profile"><a class="profile__logo" href="index.html"></a>
       <div class="profile__menu">
-        <div class="profile__title">Личный кабинет</div><a class="profile__button" href="#">Заказать</a>
-        <button class="profile__logout">Выйти</button>
+        <div class="profile__title">Личный кабинет</div><a class="profile__button" href="index.html">Заказать</a><a class="profile__logout" href="index.html">Выйти</a>
       </div>
       <div class="profile__wrapper">
         <div class="profile__info">
@@ -84,7 +82,12 @@
             </div>
             <div class="footer__copyright">© 2017 «Одобрено», «ВТБ», все права защищены</div>
           </div>
-          <div class="c c6 footer__icons"><a class="footer__icon footer__icon--vk" href="#"></a><a class="footer__icon footer__icon--fb" href="#"></a><a class="footer__icon footer__icon--ins" href="#"></a><a class="footer__icon footer__icon--tw" href="#"></a></div>
+          <div class="c c6">
+            <div class="footer__icons"><a class="footer__icon footer__icon--vk" href="#"></a><a class="footer__icon footer__icon--fb" href="#"></a><a class="footer__icon footer__icon--ins" href="#"></a><a class="footer__icon footer__icon--tw" href="#"></a></div>
+          </div>
+          <div class="c c12">
+            <div class="footer__links"><a class="footer__link" href="#">О компании</a> <a class="footer__link" href="#">Пользовательское соглашение</a> <a class="footer__link" href="#">Политика конфиденциальности</a> <a class="footer__link" href="#">Способы оплаты</a></div>
+          </div>
         </div>
       </footer>
     </div>
@@ -92,7 +95,7 @@
             <div class="popup" id="popup-register">
               <div class="popup__close"></div>
               <div class="popup__text">Войти в личный кабинет</div>
-              <form novalidate="">
+              <form novalidate="" action="profile.html">
                 <div class="popup__input">
                         <div class="input">
                           <input class="input__input" value="" required="" type="phone">
@@ -120,6 +123,7 @@
                       
                 <div class="popup__error"></div>
               </form>
+              <div class="popup__footer"><a class="popup__resend">Отправить повторно</a></div>
             </div>
     </div>
   </body>
@@ -128,6 +132,7 @@
     var SUGGEST_KEY = "fdd27007fe8069d376aa269885162a16ef0e55d4";
     var API_URL = 'https://test-odobreno.srg-it.ru/';
     var ITEMS_PER_PAGE = 20;
+    var PARTNERS = { 1: "TEST", 2: "TEST2", 3: "TEST3" }
   </script>
   <script src="js/app.js"></script>
 </html>

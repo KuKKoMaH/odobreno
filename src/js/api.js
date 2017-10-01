@@ -4,6 +4,10 @@ export const login = (phone) => {
   return fetch({ method: 'POST', url: 'customer/findOrCreate', data: { phone } });
 };
 
+export const sendCode = (id, phone) => {
+  return fetch({ method: 'POST', url: 'customer/smscode', data: { id, phone } });
+};
+
 export const confirm = (id, code) => {
   return fetch({ method: 'GET', url: 'customer/checkcode', data: { id, code } });
 };
@@ -31,6 +35,19 @@ export const updateOrder = (data, token) => {
 export const payBonusOrder = (id, token) => {
   return fetch({ method: 'POST', url: `order/${id}/payWithBonus`, options: { token } });
 };
+
+export const payOrder = (id, url, token) => {
+  return fetch({
+    method:  'GET',
+    url:     `order/${id}/payWithCard`,
+    data:    { returnUrl: url, failUrl: url },
+    options: { token }
+  });
+};
+
+export const confirmPayment = (id, orderId, q, status, token) => {
+  return fetch({ method: 'GET', url: `order/${id}/updatePayStatus`, data: { q, orderId, status }, options: { token } });
+}
 
 export const confirmOrder = (id, data, token) => {
   return fetch({ method: 'POST', url: `order/${id}/updateListDetailsAndSendOrderToSRG`, data, options: { token } });

@@ -22,7 +22,7 @@
             <li><a href="#advantages">Наши преимущества</a></li>
           </ul>
           <div class="menu__item"><a class="menu__button" href="order_step1.html">ЗАКАЗАТЬ</a></div>
-          <div class="menu__item"><a class="menu__cabinet" href="/profile">Личный кабинет</a></div>
+          <div class="menu__item"><a class="menu__cabinet" href="/profile.html">Личный кабинет</a></div>
         </div>
       </div>
     </div>
@@ -88,14 +88,19 @@
           </div>
           <div class="footer__copyright">© 2017 «Одобрено», «ВТБ», все права защищены</div>
         </div>
-        <div class="c c6 footer__icons"><a class="footer__icon footer__icon--vk" href="#"></a><a class="footer__icon footer__icon--fb" href="#"></a><a class="footer__icon footer__icon--ins" href="#"></a><a class="footer__icon footer__icon--tw" href="#"></a></div>
+        <div class="c c6">
+          <div class="footer__icons"><a class="footer__icon footer__icon--vk" href="#"></a><a class="footer__icon footer__icon--fb" href="#"></a><a class="footer__icon footer__icon--ins" href="#"></a><a class="footer__icon footer__icon--tw" href="#"></a></div>
+        </div>
+        <div class="c c12">
+          <div class="footer__links"><a class="footer__link" href="#">О компании</a> <a class="footer__link" href="#">Пользовательское соглашение</a> <a class="footer__link" href="#">Политика конфиденциальности</a> <a class="footer__link" href="#">Способы оплаты</a></div>
+        </div>
       </div>
     </footer>
     <div class="popups">
             <div class="popup" id="popup-register">
               <div class="popup__close"></div>
               <div class="popup__text">Войти в личный кабинет</div>
-              <form novalidate="">
+              <form novalidate="" action="profile.html">
                 <div class="popup__input">
                         <div class="input">
                           <input class="input__input" value="" required="" type="phone">
@@ -123,6 +128,7 @@
                       
                 <div class="popup__error"></div>
               </form>
+              <div class="popup__footer"><a class="popup__resend">Отправить повторно</a></div>
             </div>
     </div>
   </body>
@@ -131,6 +137,7 @@
     var SUGGEST_KEY = "fdd27007fe8069d376aa269885162a16ef0e55d4";
     var API_URL = 'https://test-odobreno.srg-it.ru/';
     var ITEMS_PER_PAGE = 20;
+    var PARTNERS = { 1: "TEST", 2: "TEST2", 3: "TEST3" }
   </script>
   <script src="js/app.js"></script>
 </html>

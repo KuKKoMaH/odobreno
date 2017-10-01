@@ -1,5 +1,5 @@
 import { getParam } from '../../js/history';
-import { getOrder, confirmOrder } from '../../js/api';
+import { getOrder, confirmOrder, confirmPayment } from '../../js/api';
 import Auth from '../../js/Auth';
 
 const $form = $('#form-docs');
@@ -8,6 +8,8 @@ if ($form.length) {
   const orderId = getParam('order');
 
   getOrder(orderId, Auth.token).then(order => {
+    confirmPayment(orderId, getParam('orderId'), getParam('q'), true);
+
     $('.form__form').show();
 
     $form.on('submit', (e) => {
@@ -25,11 +27,26 @@ if ($form.length) {
     .catch(() => $('.form__error').show())
     .always(() => $('.form__spinner').hide());
 
-  // const file = document.getElementById('file');
-  // if (file) {
-  //   require.ensure([], () => {
-  //     const Dropzone = require('dropzone');
-  //     new Dropzone(file, { url: '/file/post' });
-  //   });
-  // }
+  require.ensure([], () => {
+    require('blueimp-file-upload');
+    const types = [
+      'TECHNICAL_DOCUMENT',
+      'LEGAL_DOCUMENT'
+    ];
+    types.forEach((type) => {
+      const $el = $(`#${type}`);
+      $el.find('.docs__input').fileupload({
+        url:       `${API_URL}order/${orderId}/file/${type}`,
+        headers:   {
+          token: Auth.token,
+        },
+        paramName: 'file',
+        done:      (e, data) => {
+          const response = JSON.parse(data.result);
+          response.files.map(file => $el.append(`<div class="docs__item">${file.originalFilename}</div>`));
+        },
+      });
+
+    });
+  });
 }

@@ -1,5 +1,5 @@
 import Input from '../input/input';
-import { getOrder, updateOrder, payBonusOrder } from '../../js/api';
+import { getOrder, updateOrder, payBonusOrder, payOrder } from '../../js/api';
 import { getParam } from '../../js/history';
 import Auth from '../../js/Auth';
 
@@ -22,9 +22,9 @@ if ($form.length) {
       $('#form-surname').val(profile.surname);
       $('#form-patronymic').val(profile.parentalName);
       $('#form-phone').val(profile.phone).mask('+7 (999) 999-99-99');
-
       if (order.inspectionDate) $('#form-date').val(order.inspectionDate.reverse().join('.'));
       if (order.timeBlock) $('#form-time').val(order.timeBlock);
+      $('#form-partner').val(order.partnerCode);
       $('#form-comment').val(order.comment);
 
       const $sellingPrice = new Input({
@@ -51,6 +51,10 @@ if ($form.length) {
       const $time = new Input({
         $el:       $('#form-time').parent(),
         validator: { 'Выберите время': val => !!val },
+      });
+      const $partner = new Input({
+        $el: $('#form-partner').parent(),
+        validator: { 'Невереый код партнера': val => !val || !!window.PARTNERS[val] },
       });
       const $comment = new Input({
         $el: $('#form-comment').parent(),
@@ -82,10 +86,15 @@ if ($form.length) {
         e.preventDefault();
 
         const data = collectOrder();
+        const url = `${$form.prop('action')}?order=${orderId}`;
+        // const url = `${$form.prop('action')}`;
         if (!data) return;
 
         updateOrder(data, Auth.token)
-          .then(() => (window.location.href = $form.attr('action') + '?order=' + order.id))
+          .catch(err => {
+          })
+          .then(() => payOrder(data.id, url, Auth.token))
+          .then((redirect) => (window.location.href = redirect.formUrl))
         // console.log(data);
       });
 
@@ -104,6 +113,7 @@ if ($form.length) {
           parentalName:      $patronymic.getValue(),
           salePrice:         +$sellingPrice.getValue(),
           acceptedAgreement: true,
+          partnerCode:       $partner.getValue(),
         };
 
       }

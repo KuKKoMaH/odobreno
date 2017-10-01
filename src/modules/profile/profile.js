@@ -1,11 +1,17 @@
 import { getOrderList } from '../../js/api';
 import Auth from '../../js/Auth';
 
+const $logout = $('.profile__logout');
 const $table = $('#profile-table');
 const $rows = $table.find('.table__rows');
 const $pagination = $('.pagination');
 
+$logout.on('click', (e) => {
+  Auth.logout();
+});
+
 const l10nStatus = {
+  CREATION:           'Создан',
   DRAFT:              'Черновик',
   VERIFICATION:       'Ожидает проверки документов',
   WAIT_CUSTOMER_DATA: 'Ожидает исправления документов покупателем',
@@ -16,10 +22,13 @@ const l10nStatus = {
 const statuses = Object.keys(l10nStatus);
 
 if ($table.length) {
-  Auth.getProfile().then((profile) => {
-    $('.profile__name').html(`${profile.surname} ${profile.name}`);
-    $('.profile__bonus').html(profile.bonus);
-  });
+  Auth.getProfile().then(
+    (profile) => {
+      $('.profile__name').html(`${profile.surname} ${profile.name}`);
+      $('.profile__bonus').html(profile.bonus);
+    },
+    () => (window.location = $logout.attr('href'))
+  );
 
   const template = $('.table__template').html();
   const $summary = $('.profile__stats tbody');
