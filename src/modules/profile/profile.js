@@ -11,15 +11,21 @@ $logout.on('click', (e) => {
 });
 
 const l10nStatus = {
-  CREATION:           'Создан',
-  DRAFT:              'Черновик',
-  VERIFICATION:       'Ожидает проверки документов',
-  WAIT_CUSTOMER_DATA: 'Ожидает исправления документов покупателем',
-  INSPECTION:         'Назначен осмотр',
-  EXPERT_IN_PROGRESS: 'Осмотр проведен',
-  DONE:               'Выполнен',
+  CREATION:   'Создан',
+  // DRAFT:              'Черновик',
+  // VERIFICATION:       'Ожидает проверки документов',
+  // WAIT_CUSTOMER_DATA: 'Ожидает исправления документов покупателем',
+  INSPECTION: 'Назначен осмотр',
+  // EXPERT_IN_PROGRESS: 'Осмотр проведен',
+  DONE:       'Выполнен',
 };
 const statuses = Object.keys(l10nStatus);
+
+const l10nTypes = {
+  TECHNICAL_DOCUMENT: 'Технические документы',
+  LEGAL_DOCUMENT:     'Правоустанавливающие документы'
+};
+const types = Object.keys(l10nTypes);
 
 if ($table.length) {
   Auth.getProfile().then(
@@ -45,14 +51,34 @@ if ($table.length) {
     $pagination.html('');
     items
       .map((item, i) => ({
-        index:   i + 1,
-        address: `${item.address} кв. ${item.flat}`,
-        status:  l10nStatus[item.status],
-        paid:    item.paid ? ' Оплачено' : 'Не оплачено',
+        index:     i + 1,
+        address:   `${item.address} кв. ${item.flat}`,
+        status:    l10nStatus[item.status] || '',
+        paid:      item.paid ? ' Оплачено' : 'Не оплачено',
+        documents: generateDocuments(item.attachedFileList)
       }))
       .forEach((item, i) => $rows.append(renderRow(item)));
 
     items.forEach(item => summary[item.status]++);
     statuses.forEach((status) => $summary.append(renderSummary(l10nStatus[status], summary[status])))
   });
+
+  function generateDocuments (fileList) {
+    if (!Array.isArray(fileList)) return '';
+    const docs = {};
+    let result = '';
+
+    fileList.forEach((file) => {
+      const {fileType, originalFilename} = file;
+      if(!docs[fileType]) docs[fileType] = [];
+      docs[fileType].push(originalFilename);
+    });
+
+    types.forEach((type) => {
+      if(!docs[type]) return;
+      result += type + '<br>';
+      docs[type].forEach(filename => result += filename + '<br>');
+    })
+    return result;
+  }
 }

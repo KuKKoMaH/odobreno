@@ -5,7 +5,7 @@ export const login = (phone) => {
 };
 
 export const sendCode = (id, phone) => {
-  return fetch({ method: 'POST', url: 'customer/smscode', data: { id, phone } });
+  return fetch({ method: 'GET', url: 'customer/smscode', data: { id, phone } });
 };
 
 export const confirm = (id, code) => {
@@ -18,6 +18,10 @@ export const getProfile = (token) => {
 
 export const getOrder = (orderId, token) => {
   return fetch({ method: 'GET', url: `order/${orderId}`, options: { token } });
+};
+
+export const deleteFile = (filePath, token) => {
+  return fetch({ method: 'DELETE', url: `order/file/${filePath}`, options: { token } });
 };
 
 export const getOrderList = (token) => {
