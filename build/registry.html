@@ -11,8 +11,10 @@
   </head>
   <body>
     <div class="menu menu--full">
-      <div class="w"><a class="menu__logo" href=".."></a>
-        <div class="menu__vtb"></div>
+      <div class="w">
+        <div class="menu__images"><a class="menu__logo" href=".."></a>
+          <div class="menu__vtb"></div>
+        </div>
         <button class="menu__hamburger"></button>
         <div class="menu__wrapper">
           <button class="menu__close"></button>
@@ -57,11 +59,11 @@
               </div>
               <div class="table__cell table__date">
                 <div class="table__label">Срок действия</div>
-                <div class="table__value">{{expirationDate}}</div>
+                <div class="table__value">{{validUntil}}</div>
               </div>
               <div class="table__cell table__certificate">
                 <div class="table__label">№ Сертификата</div>
-                <div class="table__value">{{id}}</div>
+                <div class="table__value"><a href="#">{{id}}</a></div>
               </div>
             </div>
           </div>

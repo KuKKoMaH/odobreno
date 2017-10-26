@@ -10,14 +10,21 @@ const types = [
 
 if ($form.length) {
   const orderId = getParam('order');
+  const isDone = getParam('done');
 
-  getOrder(orderId, Auth.token).then((order) => {
+  getOrder(orderId, Auth.token).then(( order ) => {
     confirmPayment(orderId, getParam('orderId'), getParam('q'), true, Auth.token);
 
     $('.form__form').show();
+    $(isDone ? "#options" : "#link").hide();
 
-    $form.on('submit', (e) => {
+    $('#to-profile').on('click', (e) => {
+        window.location.href = $(e.target).data('href');
+    });
+
+    $form.on('submit', ( e ) => {
       e.preventDefault();
+
       const data = {
         legalPersonOwner:   $('#form-legalPersonOwner').prop('checked'),
         minorOwner:         $('#form-minorOwner').prop('checked'),
@@ -28,9 +35,9 @@ if ($form.length) {
     });
 
     if (Array.isArray(order.attachedFileList)) {
-      types.forEach((type) => {
+      types.forEach(( type ) => {
         const $el = $(`#${type}`);
-        order.attachedFileList.forEach((file) => {
+        order.attachedFileList.forEach(( file ) => {
           if (file.fileType !== type) return;
           $el.append(createFile(file));
         });
@@ -43,7 +50,7 @@ if ($form.length) {
   require.ensure([], () => {
     require('blueimp-file-upload');
 
-    types.forEach((type) => {
+    types.forEach(( type ) => {
       const $el = $(`#${type}`);
 
       $el.find('.docs__input').fileupload({
@@ -52,7 +59,7 @@ if ($form.length) {
           token: Auth.token,
         },
         paramName: 'file',
-        done:      (e, data) => {
+        done:      ( e, data ) => {
           const response = data.result;
           response.files.map(file => $el.append(createFile(file)));
         },
@@ -61,10 +68,10 @@ if ($form.length) {
     });
   });
 
-  function createFile (file) {
+  function createFile( file ) {
     const $button = $('<button class="docs__delete"></button>');
     const $el = $(`<div class="docs__item">${file.originalFilename}</div>`);
-    $button.on('click', (e) => {
+    $button.on('click', ( e ) => {
       e.preventDefault();
       deleteFile(file.filePath, Auth.token).then(() => $el.remove());
     });

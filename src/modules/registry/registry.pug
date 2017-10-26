@@ -19,8 +19,8 @@
             .table__value {{address}}
           .table__cell.table__date
             .table__label Срок действия
-            .table__value {{expirationDate}}
+            .table__value {{validUntil}}
           .table__cell.table__certificate
             .table__label № Сертификата
-            .table__value {{id}}
+            .table__value: a(href='#') {{id}}
     include ../pagination/pagination

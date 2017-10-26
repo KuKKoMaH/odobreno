@@ -29,7 +29,8 @@ if ($form.length) {
 
       const $sellingPrice = new Input({
         $el:       $('#form-sellingPrice').parent(),
-        validator: { 'Введите цену продажи': (val) => !!+val },
+        validator: { 'Введите цену продажи': (val) => !!val },
+        type:      'currency',
       });
       const $name = new Input({
         $el:       $('#form-name').parent(),
@@ -53,7 +54,7 @@ if ($form.length) {
         validator: { 'Выберите время': val => !!val },
       });
       const $partner = new Input({
-        $el: $('#form-partner').parent(),
+        $el:       $('#form-partner').parent(),
         validator: { 'Невереый код партнера': val => !val || !!window.PARTNERS[val] },
       });
       const $comment = new Input({

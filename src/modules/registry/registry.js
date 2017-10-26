@@ -19,7 +19,7 @@ if ($table.length) {
     $rows.html('');
     $pagination.html('');
     $pagination.append(renderPagination({
-      total:       items.pager.total,
+      total:       items.totalElements,
       itemPerPage: ITEMS_PER_PAGE,
       currentPage: page,
       onClick:     (nextPage) => {
@@ -28,7 +28,7 @@ if ($table.length) {
       }
     }));
 
-    items.data.forEach((item, i) => $rows.append(renderRow(item, i, ITEMS_PER_PAGE * page)));
+    items.content.forEach((item, i) => $rows.append(renderRow(item, i, ITEMS_PER_PAGE * page)));
   });
 
   loadItems(getParam('query') || '', +getParam('offset') || 0);

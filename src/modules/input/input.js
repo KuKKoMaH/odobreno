@@ -1,4 +1,5 @@
 import 'suggestions-jquery';
+import Cleave from 'cleave.js';
 
 export default class Input {
   constructor ({ $el, type, onSelect, validator }) {
@@ -43,6 +44,14 @@ export default class Input {
           format:    'dd.mm.yyyy',
           autoclose: true
         }).on('changeDate', this.validate);
+      });
+    }
+
+    if (type === 'currency') {
+      new Cleave(this.$input, {
+        delimiter:                  ' ',
+        numeral:                    true,
+        numeralThousandsGroupStyle: 'thousand'
       });
     }
 

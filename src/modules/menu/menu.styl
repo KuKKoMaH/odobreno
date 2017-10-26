@@ -3,27 +3,25 @@ $baseClass = '.menu'
 {$baseClass}
   @media (max-width: $breakpoint-sm - 1)
     text-align: center
-  &__logo
+
+  &__images
     float: left
-    background-image: url(sprite-logo-white.svg)
-    display: block
 
     @media (max-width: $breakpoint-md - 1)
       float: none
-      margin: 0 auto
-    @media (max-width: $breakpoint-sm - 1)
-      display: inline-block
-      vertical-align: middle
+      text-align: center
+
+  &__logo
+    background-image: url(sprite-logo-white.svg)
+    display: inline-block
+    vertical-align: middle
 
   &__vtb
-    display: none
+    display: inline-block
     vertical-align: middle
-    background-image: url(../header/sprite-vtb.svg)
-    transform: scale(.5)
-    margin-left: -30px
-    margin-right: -30px
-    @media (max-width: $breakpoint-sm - 1)
-      display: inline-block
+    background-image: url(../header/sprite-vtb-small.svg)
+    margin-left: 18px
+    margin-top: 9px
 
   &__hamburger,
   &__close
@@ -89,6 +87,9 @@ $baseClass = '.menu'
       &:first-child
         margin-left: 0
 
+      @media (max-width: $breakpoint-lg - 1)
+        margin-left: 5px
+
       @media (max-width: $breakpoint-md - 1)
         margin-left: 15px
 
@@ -117,6 +118,9 @@ $baseClass = '.menu'
   &__item
     display: inline-block
     margin-left: 25px
+
+    @media (max-width: $breakpoint-lg - 1)
+      margin-left: 5px
 
     @media (max-width: $breakpoint-md - 1)
       margin-left: 25px

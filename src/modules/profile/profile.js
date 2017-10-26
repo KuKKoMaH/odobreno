@@ -6,30 +6,28 @@ const $table = $('#profile-table');
 const $rows = $table.find('.table__rows');
 const $pagination = $('.pagination');
 
-$logout.on('click', (e) => {
+$logout.on('click', ( e ) => {
   Auth.logout();
 });
 
 const l10nStatus = {
-  CREATION:   'Создан',
-  // DRAFT:              'Черновик',
-  // VERIFICATION:       'Ожидает проверки документов',
-  // WAIT_CUSTOMER_DATA: 'Ожидает исправления документов покупателем',
-  INSPECTION: 'Назначен осмотр',
-  // EXPERT_IN_PROGRESS: 'Осмотр проведен',
-  DONE:       'Выполнен',
+  DRAFT:              'Черновик',
+  WAIT_CUSTOMER_DATA: 'Ожидание информации',
+  MODERATION:         'Проверка документов',
+  INSPECTION:         'В работе',
+  EXPERT_IN_PROGRESS: 'В работе',
+  DONE:               'Завершена',
 };
-const statuses = Object.keys(l10nStatus);
 
 const l10nTypes = {
-  TECHNICAL_DOCUMENT: 'Технические документы',
-  LEGAL_DOCUMENT:     'Правоустанавливающие документы'
+  TECHNICAL_DOCUMENT: 'Технические',
+  LEGAL_DOCUMENT:     'Правоустанавливающие'
 };
 const types = Object.keys(l10nTypes);
 
 if ($table.length) {
   Auth.getProfile().then(
-    (profile) => {
+    ( profile ) => {
       $('.profile__name').html(`${profile.surname} ${profile.name}`);
       $('.profile__bonus').html(profile.bonus);
     },
@@ -38,45 +36,44 @@ if ($table.length) {
 
   const template = $('.table__template').html();
   const $summary = $('.profile__stats tbody');
-  const renderSummary = (status, count) => $(`<tr><td>${status}</td><td class="profile__count">${count}</td></tr>`);
-  const renderRow = (data) => template.replace(/{{(.*?)}}/g, (placeholder, field) => data[field]);
+  const renderSummary = ( status, count ) => $(`<tr><td>${status}</td><td class="profile__count">${count}</td></tr>`);
+  const renderRow = ( data ) => template.replace(/{{(.*?)}}/g, ( placeholder, field ) => data[field]);
 
-  const summary = statuses.reduce((obj, key) => {
-    obj[key] = 0;
-    return obj;
-  }, {});
+  const summary = {};
+  for (let status in l10nStatus) summary[l10nStatus[status]] = 0;
 
-  getOrderList(Auth.token).done((items) => {
+  getOrderList(Auth.token).done(( items ) => {
     $rows.html('');
     $pagination.html('');
     items
-      .map((item, i) => ({
+      .map(( item, i ) => ({
+        id:        item.id,
         index:     i + 1,
         address:   `${item.address} кв. ${item.flat}`,
         status:    l10nStatus[item.status] || '',
         paid:      item.paid ? ' Оплачено' : 'Не оплачено',
         documents: generateDocuments(item.attachedFileList)
       }))
-      .forEach((item, i) => $rows.append(renderRow(item)));
+      .forEach(( item, i ) => $rows.append(renderRow(item)));
 
-    items.forEach(item => summary[item.status]++);
-    statuses.forEach((status) => $summary.append(renderSummary(l10nStatus[status], summary[status])))
+    items.forEach(item => summary[l10nStatus[item.status]]++);
+    Object.keys(summary).forEach(( status ) => $summary.append(renderSummary(status, summary[status])))
   });
 
-  function generateDocuments (fileList) {
+  function generateDocuments( fileList ) {
     if (!Array.isArray(fileList)) return '';
     const docs = {};
     let result = '';
 
-    fileList.forEach((file) => {
-      const {fileType, originalFilename} = file;
-      if(!docs[fileType]) docs[fileType] = [];
+    fileList.forEach(( file ) => {
+      const { fileType, originalFilename } = file;
+      if (!docs[fileType]) docs[fileType] = [];
       docs[fileType].push(originalFilename);
     });
 
-    types.forEach((type) => {
-      if(!docs[type]) return;
-      result += type + '<br>';
+    types.forEach(( type ) => {
+      if (!docs[type]) return;
+      result += '<b>' + l10nTypes[type] + ':</b><br>';
       docs[type].forEach(filename => result += filename + '<br>');
     })
     return result;

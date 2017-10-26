@@ -11,8 +11,10 @@
   </head>
   <body>
     <div class="menu menu--full">
-      <div class="w"><a class="menu__logo" href=".."></a>
-        <div class="menu__vtb"></div>
+      <div class="w">
+        <div class="menu__images"><a class="menu__logo" href=".."></a>
+          <div class="menu__vtb"></div>
+        </div>
         <button class="menu__hamburger"></button>
         <div class="menu__wrapper">
           <button class="menu__close"></button>
@@ -41,6 +43,7 @@
                 <div class="docs__row">
                   <div class="docs__wrapper">
                     <div class="docs__title">Правоустанавливающие документы</div>
+                    <div class="docs__subtitle">(Загрузить один из нижепреведенных документов)</div>
                     <div class="docs__doc">
                       <div class="docs__name">Свидетельство о государственной регистрации права</div>
                       <div class="docs__desc">(выданное до 15.07.2016)</div>
@@ -72,7 +75,7 @@
                 <div class="docs__row">
                   <div class="docs__wrapper">
                     <div class="docs__title">Технические документы</div>
-                    <div class="docs__doc">
+                    <div class="docs__doc docs__doc--merge">
                       <div class="docs__name">Поэтажный план БТИ</div>
                       <div class="docs__desc">(документ включает в себя все помещения, находящиеся в указанной квартире с отмеченными на нем несущими стенами, проемами (оконнымы и дверными), перегородками и др.)</div>
                     </div>
@@ -100,25 +103,35 @@
                     <!--  button.docs__delete-->
                   </div>
                 </div>
-                <div class="form__checkbox">
-                  <input type="checkbox" id="form-legalPersonOwner">
-                  <label for="form-legalPersonOwner">Собственником является юридическое лицо</label>
-                </div>
-                <div class="form__checkbox">
-                  <input type="checkbox" id="form-minorOwner">
-                  <label for="form-minorOwner">Собственником является несовершеннолетнее лицо</label>
-                </div>
-                <div class="form__checkbox">
-                  <input type="checkbox" id="form-onerousTransaction">
-                  <label for="form-onerousTransaction">Объект недвижимости был приобретен продавцом в период брака на основании возмездной сделки</label>
-                </div>
-                <div class="docs__row">
-                  <div class="docs__wrapper"></div>
-                  <div class="docs__aside">
-                    <button class="form__button" id="form-confirm">Готово</button>
+                <div id="options">
+                  <div class="form__checkbox">
+                    <input type="checkbox" id="form-legalPersonOwner">
+                    <label for="form-legalPersonOwner">Собственником является юридическое лицо</label>
+                  </div>
+                  <div class="form__checkbox">
+                    <input type="checkbox" id="form-minorOwner">
+                    <label for="form-minorOwner">Собственником является несовершеннолетнее лицо</label>
+                  </div>
+                  <div class="form__checkbox">
+                    <input type="checkbox" id="form-onerousTransaction">
+                    <label for="form-onerousTransaction">Объект недвижимости был приобретен продавцом в период брака на основании возмездной сделки</label>
+                  </div>
+                  <div class="docs__row">
+                    <div class="docs__wrapper"></div>
+                    <div class="docs__aside">
+                      <button class="form__button" id="form-confirm">Готово</button>
+                    </div>
                   </div>
                 </div>
               </form>
+              <div id="link">
+                <div class="docs__row">
+                  <div class="docs__wrapper"></div>
+                  <div class="docs__aside">
+                    <button class="form__button" id="to-profile" data-href="/profile">Готово</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
