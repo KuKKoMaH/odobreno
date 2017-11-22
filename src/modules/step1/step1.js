@@ -31,35 +31,43 @@ if ($form.length) {
         $el:       $('#form-sellingPrice').parent(),
         validator: { 'Введите цену продажи': ( val ) => !!val },
         type:      'currency',
+        onBlur:    saveOrder,
       });
       const $name = new Input({
         $el:       $('#form-name').parent(),
         validator: { 'Введите имя': val => !!val },
+        onBlur:    saveOrder,
       });
       const $surname = new Input({
         $el:       $('#form-surname').parent(),
         validator: { 'Введите фамилию': val => !!val },
+        onBlur:    saveOrder,
       });
       const $patronymic = new Input({
         $el:       $('#form-patronymic').parent(),
         validator: { 'Введите отчество': val => !!val },
+        onBlur:    saveOrder,
       });
       const $date = new Input({
         $el:       $('#form-date').parent(),
         type:      'date',
         validator: { 'Выберите дату': val => !!val },
+        onBlur:    saveOrder,
       });
       const $time = new Input({
         $el:       $('#form-time').parent(),
         validator: { 'Выберите время': val => !!val },
+        onBlur:    saveOrder,
       });
       const $partner = new Input({
         $el:       $('#form-partner').parent(),
         validator: { 'Невереый код партнера': val => !val || !!window.PARTNERS[val] },
+        onBlur:    saveOrder,
       });
       const $comment = new Input({
-        $el:  $('#form-comment').parent(),
-        type: 'textarea',
+        $el:    $('#form-comment').parent(),
+        type:   'textarea',
+        onBlur: saveOrder,
       });
 
       const fields = [$sellingPrice, $name, $surname, $patronymic, $date, $time, $comment];
@@ -76,34 +84,37 @@ if ($form.length) {
 
       $button_bonus.on('click', ( e ) => {
         e.preventDefault();
-        const data = collectOrder();
-        if (!data) return;
-        updateOrder(data, Auth.token)
-          .then(() => payBonusOrder(data.id, Auth.token))
-          .then(() => window.location.href = $form.attr('action') + '?order=' + data.id);
+        saveOrder()
+          .then(() => payBonusOrder(orderId, Auth.token))
+          .then(() => window.location.href = $form.attr('action') + '?order=' + orderId);
         // ;
       });
 
       $form.on('submit', ( e ) => {
         e.preventDefault();
 
-        const data = collectOrder();
         const url = `${$form.prop('action')}?order=${orderId}`;
         // const url = `${$form.prop('action')}`;
-        if (!data) return;
 
-        updateOrder(data, Auth.token)
+        saveOrder()
           .catch(err => {
           })
-          .then(() => payOrder(data.id, url, Auth.token))
+          .then(( data ) => payOrder(orderId, url, Auth.token))
           .then(( redirect ) => (window.location.href = redirect.formUrl))
         // console.log(data);
       });
 
+      function saveOrder() {
+        const data = collectOrder();
+        console.log(data);
+        if (!data) return;
+        return updateOrder(data, Auth.token);
+      }
+
       function collectOrder() {
-        if (!$offer.prop('checked')) return null;
-        fields.forEach(field => field.validate());
-        if (fields.some(field => !field.isValid())) return null;
+        // if (!$offer.prop('checked')) return null;
+        // fields.forEach(field => field.validate());
+        // if (fields.some(field => !field.isValid())) return null;
 
         return {
           id:                order.id,

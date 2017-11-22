@@ -2,8 +2,9 @@ import 'suggestions-jquery';
 import Cleave from 'cleave.js';
 
 export default class Input {
-  constructor( { $el, type, onSelect, validator } ) {
+  constructor( { $el, type, onSelect, validator, onBlur } ) {
     this.validator = validator;
+    this.valid = false;
     this.$el = $el;
     this.$input = $el.find('.input__input, .input__select, .input__textarea');
     this.$error = $el.find('.input__error');
@@ -63,7 +64,10 @@ export default class Input {
       });
     }
 
-    this.$input.on('blur', this.validate);
+    this.$input.on('blur', () => {
+      this.validate();
+      if (onBlur && this.valid) onBlur();
+    });
     this.$input.on('input', this.onInput);
   }
 
@@ -80,7 +84,6 @@ export default class Input {
     for (const message in this.validator) {
       if (!this.validator[message](val)) this.errors.push(message);
     }
-
     if (this.errors.length) {
       this.$el.addClass('input--error');
       this.$error.html(this.errors.join(', '));
@@ -88,6 +91,8 @@ export default class Input {
       this.$el.removeClass('input--error');
       this.$error.html('');
     }
+
+    this.valid = !this.errors.length;
   }
 
   getValue() {
