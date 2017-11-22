@@ -34,7 +34,7 @@ include ../form/form
         .form__label Код партнера
         +input('Введите код партнера')(id='form-partner')
     .form__label Комментарий к заказу
-    .form__row: +input('Введите ваш коментарий')(id='form-comment')
+    .form__row: +input('Введите ваш коментарий', false, false, true)(id='form-comment')
     .form__checkbox
       input(type='checkbox' id='form-offer')
       label(for='form-offer') Текст для оферты

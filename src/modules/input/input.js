@@ -2,10 +2,10 @@ import 'suggestions-jquery';
 import Cleave from 'cleave.js';
 
 export default class Input {
-  constructor ({ $el, type, onSelect, validator }) {
+  constructor( { $el, type, onSelect, validator } ) {
     this.validator = validator;
     this.$el = $el;
-    this.$input = $el.find('.input__input, .input__select');
+    this.$input = $el.find('.input__input, .input__select, .input__textarea');
     this.$error = $el.find('.input__error');
 
     this.dirty = false;
@@ -22,7 +22,7 @@ export default class Input {
         type:            'ADDRESS',
         bounds:          'city-house',
         mobileWidth:     767,
-        onSelect:        (suggest) => {
+        onSelect:        ( suggest ) => {
           if (onSelect) onSelect(suggest);
           this.validate();
         }
@@ -42,7 +42,8 @@ export default class Input {
         this.$input.datepicker({
           language:  'ru',
           format:    'dd.mm.yyyy',
-          autoclose: true
+          autoclose: true,
+          startDate: '+1d',
         }).on('changeDate', this.validate);
       });
     }
@@ -55,15 +56,22 @@ export default class Input {
       });
     }
 
+    if (type === 'textarea') {
+      require.ensure([], () => {
+        const autosize = require('autosize');
+        autosize(this.$input[0]);
+      });
+    }
+
     this.$input.on('blur', this.validate);
     this.$input.on('input', this.onInput);
   }
 
-  onInput (e) {
+  onInput( e ) {
     if (this.dirty) this.validate();
   }
 
-  validate () {
+  validate() {
     this.dirty = true;
 
     const val = this.$input.val();
@@ -82,11 +90,11 @@ export default class Input {
     }
   }
 
-  getValue () {
+  getValue() {
     return this.$input.val();
   }
 
-  isValid () {
+  isValid() {
     return !this.errors.length;
   }
 }

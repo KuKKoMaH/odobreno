@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700&amp;amp;subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" media="all" href="style.css">
+    <!--link(rel="shortcut icon" href="/favicon.ico")-->
+  </head>
+  <body>
+    <div class="not-found">
+      <div class="not-found__title">
+        <div class="not-found__title-text">404</div>
+        <div class="not-found__title-subtext">страница не найдена</div>
+      </div>
+      <div class="not-found__separator"></div>
+      <div class="not-found__content">
+        <p>Страница, которую вы искали, не существует.<br>
+          Возможно вы ввели неправиильный адрес или страница была удалена.
+        </p><a href="..">Перейти на главную страницу</a>
+      </div>
+    </div>
+    <div class="popups">
+            <div class="popup" id="popup-register">
+              <div class="popup__close"></div>
+              <div class="popup__text">Войти в личный кабинет</div>
+              <form novalidate="" action="profile.html">
+                <div class="popup__input">
+                        <div class="input">
+                          <input class="input__input" value="" required="" type="phone">
+                          <label class="input__label">Телефон</label>
+                          <div class="input__error"></div>
+                        </div>
+                </div>
+                      <input class="button button--block" type="submit" value="Войти">
+                      
+              </form>
+            </div>
+            <div class="popup" id="popup-confirm">
+              <div class="popup__close"></div>
+              <div class="popup__text">Подтвердите номера телефона</div>
+              <div class="popup__desc">На указанный номер отправлено беслпатное СМС-сообшение с кодом проверки подлинности номера.</div>
+              <form novalidate="">
+                <div class="popup__input">
+                        <div class="input">
+                          <input class="input__input" value="" required="">
+                          <label class="input__label">Код</label>
+                          <div class="input__error"></div>
+                        </div>
+                </div>
+                      <input class="button button--block" type="submit" value="Подтвердить">
+                      
+                <div class="popup__error"></div>
+              </form>
+              <div class="popup__footer"><a class="popup__resend">Отправить повторно</a></div>
+            </div>
+    </div>
+  </body>
+  <script>
+    var JS_PUBLIC_PATH = 'js/';
+    var SUGGEST_KEY = "fdd27007fe8069d376aa269885162a16ef0e55d4";
+    var API_URL = 'https://test-odobreno.srg-it.ru/';
+    var ITEMS_PER_PAGE = 20;
+    var PARTNERS = { 1: "TEST", 2: "TEST2", 3: "TEST3" }
+  </script>
+  <script src="js/app.js"></script>
+</html>

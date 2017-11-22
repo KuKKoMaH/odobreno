@@ -41,7 +41,7 @@
       </div>
       <div class="table__container" id="profile-table">
         <div class="table__title">
-          <div class="table__number">№</div>
+          <div class="table__id">№</div>
           <div class="table__address">Адрес квартиры</div>
           <div class="table__date">Статус заказа</div>
           <div class="table__date">Оплата</div>
@@ -50,9 +50,9 @@
         <div class="table__rows"></div>
         <div class="table__template">
           <div class="table__row">
-            <div class="table__cell table__number">
+            <div class="table__cell table__id">
               <div class="table__label">№</div>
-              <div class="table__value">{{index}}</div>
+              <div class="table__value">{{id}}</div>
             </div>
             <div class="table__cell table__address">
               <div class="table__label">Адрес квартиры</div>
@@ -68,7 +68,7 @@
             </div>
             <div class="table__cell table__certificate">
               <div class="table__label">Документы</div>
-              <div class="table__value">{{documents}} <a href="/order_step3.html?order={{id}}&amp;done=true">Загрузить&nbsp;документы</a></div>
+              <div class="table__value">{{documents}}</div>
             </div>
           </div>
         </div>
@@ -91,6 +91,10 @@
         </div>
       </footer>
     </div>
+    <script>
+      var STEP1_URL = 'order_step1.html';
+      var STEP3_URL = 'order_step3.html';
+    </script>
     <div class="popups">
             <div class="popup" id="popup-register">
               <div class="popup__close"></div>

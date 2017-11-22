@@ -7,7 +7,7 @@ block body
   +profile()
     .table__container#profile-table
       .table__title
-        .table__number №
+        .table__id №
         .table__address Адрес квартиры
         .table__date Статус заказа
         .table__date Оплата
@@ -17,9 +17,9 @@ block body
 
       .table__template
         .table__row
-          .table__cell.table__number
+          .table__cell.table__id
             .table__label №
-            .table__value {{index}}
+            .table__value {{id}}
           .table__cell.table__address
             .table__label Адрес квартиры
             .table__value {{address}}
@@ -31,5 +31,9 @@ block body
             .table__value {{paid}}
           .table__cell.table__certificate
             .table__label Документы
-            .table__value {{documents}} #[a(href='/order_step3.html?order={{id}}&done=true') Загрузить&nbsp;документы]
+            .table__value {{documents}}
     include modules/footer/footer
+
+  script.
+    var STEP1_URL = 'order_step1.html';
+    var STEP3_URL = 'order_step3.html';

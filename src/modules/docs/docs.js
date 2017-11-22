@@ -11,15 +11,16 @@ const types = [
 if ($form.length) {
   const orderId = getParam('order');
   const isDone = getParam('done');
+  const q = getParam('q');
 
   getOrder(orderId, Auth.token).then(( order ) => {
-    confirmPayment(orderId, getParam('orderId'), getParam('q'), true, Auth.token);
+    if (q) confirmPayment(orderId, getParam('orderId'), getParam('q'), true, Auth.token);
 
     $('.form__form').show();
     $(isDone ? "#options" : "#link").hide();
 
-    $('#to-profile').on('click', (e) => {
-        window.location.href = $(e.target).data('href');
+    $('#to-profile').on('click', ( e ) => {
+      window.location.href = $(e.target).data('href');
     });
 
     $form.on('submit', ( e ) => {

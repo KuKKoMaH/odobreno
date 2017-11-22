@@ -11,7 +11,7 @@ if ($form.length) {
   $.when(
     Auth.getProfile(),
     getOrder(orderId, Auth.token)
-  ).then((profile, [order]) => {
+  ).then(( profile, [order] ) => {
       $('.form__form').show();
 
       $('#form-address').val(order.address);
@@ -29,7 +29,7 @@ if ($form.length) {
 
       const $sellingPrice = new Input({
         $el:       $('#form-sellingPrice').parent(),
-        validator: { 'Введите цену продажи': (val) => !!val },
+        validator: { 'Введите цену продажи': ( val ) => !!val },
         type:      'currency',
       });
       const $name = new Input({
@@ -58,7 +58,8 @@ if ($form.length) {
         validator: { 'Невереый код партнера': val => !val || !!window.PARTNERS[val] },
       });
       const $comment = new Input({
-        $el: $('#form-comment').parent(),
+        $el:  $('#form-comment').parent(),
+        type: 'textarea',
       });
 
       const fields = [$sellingPrice, $name, $surname, $patronymic, $date, $time, $comment];
@@ -73,7 +74,7 @@ if ($form.length) {
         if (profile.bonus > 0) $button_bonus.attr('disabled', !$offer.prop('checked'));
       });
 
-      $button_bonus.on('click', (e) => {
+      $button_bonus.on('click', ( e ) => {
         e.preventDefault();
         const data = collectOrder();
         if (!data) return;
@@ -83,7 +84,7 @@ if ($form.length) {
         // ;
       });
 
-      $form.on('submit', (e) => {
+      $form.on('submit', ( e ) => {
         e.preventDefault();
 
         const data = collectOrder();
@@ -95,11 +96,11 @@ if ($form.length) {
           .catch(err => {
           })
           .then(() => payOrder(data.id, url, Auth.token))
-          .then((redirect) => (window.location.href = redirect.formUrl))
+          .then(( redirect ) => (window.location.href = redirect.formUrl))
         // console.log(data);
       });
 
-      function collectOrder () {
+      function collectOrder() {
         if (!$offer.prop('checked')) return null;
         fields.forEach(field => field.validate());
         if (fields.some(field => !field.isValid())) return null;

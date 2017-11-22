@@ -1,0 +1,53 @@
+.not-found
+  background: url(./bg.jpg) 50% 50% no-repeat
+  background-size: cover
+  display: flex
+  flex: 1
+  align-items: center
+  justify-content: center
+  color: #ffffff
+
+  @media (max-width: $breakpoint-md - 1)
+    flex-direction: column
+
+
+  &__title
+    text-align: center
+    &-text
+      font-size: 250px
+      line-height: .8
+      font-weight: 300
+      @media (max-width: $breakpoint-md - 1)
+        font-size 140px
+
+    &-subtext
+      font-size: 40px
+      @media (max-width: $breakpoint-md - 1)
+        font-size 25px
+
+  &__separator
+    height: 240px
+    width: 2px
+    background: #fff
+    margin: 0 40px 0 20px
+
+    @media (max-width: $breakpoint-md - 1)
+      width: 300px
+      height: 2px
+      margin: 40px auto
+
+  &__content
+    font-size: 25px
+
+    @media (max-width: $breakpoint-md - 1)
+      font-size 15px
+      text-align: center
+
+    p
+      margin: 0 0 30px 0
+
+    a
+      text-decoration: underline
+
+      &:hover
+        text-decoration: none
