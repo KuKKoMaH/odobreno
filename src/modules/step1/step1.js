@@ -70,7 +70,7 @@ if ($form.length) {
         onBlur: saveOrder,
       });
 
-      const fields = [$sellingPrice, $name, $surname, $patronymic, $date, $time, $comment];
+      // const fields = [$sellingPrice, $name, $surname, $patronymic, $date, $time, $comment];
       const $buttons = $('.form__button');
       const $button_pay = $('#form-pay');
       const $button_bonus = $('#form-bonus');
@@ -99,9 +99,11 @@ if ($form.length) {
         saveOrder()
           .catch(err => {
           })
-          .then(( data ) => payOrder(orderId, url, Auth.token))
+          .then(() => {
+            if (order.paymentFormUrl) return { formUrl: order.paymentFormUrl };
+            return payOrder(orderId, url, Auth.token);
+          })
           .then(( redirect ) => (window.location.href = redirect.formUrl))
-        // console.log(data);
       });
 
       function saveOrder() {
@@ -112,10 +114,6 @@ if ($form.length) {
       }
 
       function collectOrder() {
-        // if (!$offer.prop('checked')) return null;
-        // fields.forEach(field => field.validate());
-        // if (fields.some(field => !field.isValid())) return null;
-
         return {
           id:                order.id,
           inspectionDate:    $date.getValue(),
@@ -124,7 +122,7 @@ if ($form.length) {
           surname:           $surname.getValue(),
           name:              $name.getValue(),
           parentalName:      $patronymic.getValue(),
-          salePrice:         +$sellingPrice.getValue(),
+          salePrice:         $sellingPrice.getValue(),
           acceptedAgreement: true,
           partnerCode:       $partner.getValue(),
         };

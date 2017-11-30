@@ -8,15 +8,6 @@ const $pagination = $('.pagination');
 
 $logout.on('click', () => Auth.logout());
 
-const l10nStatus = {
-  DRAFT:              'Черновик',
-  WAIT_CUSTOMER_DATA: 'Ожидание информации',
-  MODERATION:         'Проверка документов',
-  INSPECTION:         'В работе',
-  EXPERT_IN_PROGRESS: 'В работе',
-  DONE:               'Завершена',
-};
-
 const l10nTypes = {
   TECHNICAL_DOCUMENT: 'Технические',
   LEGAL_DOCUMENT:     'Правоустанавливающие'
@@ -42,7 +33,7 @@ if ($table.length) {
     getOrderStatuses()
   ).then(( [items], statuses ) => {
     const summary = {};
-    for (let status in l10nStatus) summary[l10nStatus[status]] = 0;
+    statuses.statuses.forEach(status => summary[status] = 0);
 
     $rows.html('');
     $pagination.html('');
@@ -54,23 +45,44 @@ if ($table.length) {
         status:    statuses.l10n[item.status] || '',
         paid:      item.paid ? ' Оплачено' : 'Не оплачено<br/><button class="profile__link profile__link--pay">Оплатить</button>',
         documents: generateDocuments(item),
+        original:  item,
       }))
       .forEach(( item, i ) => {
-        const row = $(renderRow(item));
-        $rows.append(row);
-        row.find('.profile__link--upload').on('click', ( e ) => {
-          e.preventDefault();
-          window.location = `${STEP3_URL}?order=${item.id}`;
-        });
-        row.find('.profile__link--pay').on('click', ( e ) => {
-          e.preventDefault();
-          window.location = `${STEP1_URL}?order=${item.id}`;
-        });
-      });
+          const row = $(renderRow(item));
+          $rows.append(row);
+          row.find('.profile__link--upload').on('click', ( e ) => {
+            e.preventDefault();
+            if (item.original.paid) {
+              window.location = `${STEP3_URL}?order=${item.id}&done=true`;
+              return;
+            }
+            $.magnificPopup.open({
+                items:     {
+                  src:  '#popup-payment',
+                  type: 'inline'
+                },
+                callbacks: {
+                  open: function () {
+                    this.content.find('.button').off('click').on('click', () => {
+                      window.location = `${STEP1_URL}?order=${item.id}&done=true`;
+                    })
+                  }
+                }
+              }
+            );
+          });
+          row.find('.profile__link--pay').on('click', ( e ) => {
+            e.preventDefault();
+            window.location = `${STEP1_URL}?order=${item.id}&done=true`;
+          });
+        }
+      )
+    ;
 
-    items.forEach(item => summary[item.status] = summary[item.status] + 1 || 1);
+    items.forEach(item => summary[item.status]++);
     statuses.statuses.forEach(( status ) => $summary.append(renderSummary(statuses.l10n[status], summary[status])))
-  });
+  })
+  ;
 
   function generateDocuments( item ) {
     const { attachedFileList } = item;
@@ -91,9 +103,9 @@ if ($table.length) {
       });
     }
 
-    result += '<br/><button class="profile__link profile__link--upload">Загрузить</button>';
+    if (result) result += '<br/>';
+    result += '<button class="profile__link profile__link--upload">Загрузить</button>';
 
-    //#[a(href='/order_step3.html?order={{id}}&done=true') Загрузить&nbsp;документы]
     return result;
   }
 }

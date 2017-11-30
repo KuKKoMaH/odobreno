@@ -6,6 +6,7 @@ export default class Input {
     this.validator = validator;
     this.valid = false;
     this.$el = $el;
+    this.type = type;
     this.$input = $el.find('.input__input, .input__select, .input__textarea');
     this.$error = $el.find('.input__error');
 
@@ -96,6 +97,7 @@ export default class Input {
   }
 
   getValue() {
+    if (this.type === 'currency') return +this.$input.val().replace(/ /g, '');
     return this.$input.val();
   }
 
