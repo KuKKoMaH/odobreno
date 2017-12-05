@@ -1,5 +1,5 @@
 import { getParam } from '../../js/history';
-import { getOrder, confirmOrder, confirmPayment, deleteFile } from '../../js/api';
+import { getOrder, confirmOrder, confirmPayment, deleteFile, finishLoadDocuments } from '../../js/api';
 import Auth from '../../js/Auth';
 
 const $form = $('#form-docs');
@@ -32,6 +32,7 @@ if ($form.length) {
         onerousTransaction: $('#form-onerousTransaction').prop('checked')
       };
       confirmOrder(orderId, data, Auth.token)
+        .then(() => finishLoadDocuments(orderId, Auth.token))
         .then(() => (window.location.href = $form.attr('action')))
     });
 

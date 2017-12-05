@@ -108,7 +108,6 @@ if ($form.length) {
 
       function saveOrder() {
         const data = collectOrder();
-        console.log(data);
         if (!data) return;
         return updateOrder(data, Auth.token);
       }

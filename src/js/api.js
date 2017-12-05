@@ -77,3 +77,7 @@ export const getOrderStatuses = () => {
     };
   });
 };
+
+export const finishLoadDocuments = ( id, token) => {
+  return fetch({ method: 'POST', url: `order/${id}/finishLoadDocuments`, options: { token } });
+};

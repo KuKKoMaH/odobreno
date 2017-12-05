@@ -46,7 +46,10 @@ export default class Input {
           format:    'dd.mm.yyyy',
           autoclose: true,
           startDate: '+1d',
-        }).on('changeDate', this.validate);
+        }).on('changeDate', () => {
+          this.validate();
+          if (onBlur && this.valid) onBlur();
+        });
       });
     }
 
@@ -67,7 +70,7 @@ export default class Input {
 
     this.$input.on('blur', () => {
       this.validate();
-      if (onBlur && this.valid) onBlur();
+      if (onBlur && this.valid && type !== 'date') onBlur();
     });
     this.$input.on('input', this.onInput);
   }
