@@ -1,6 +1,7 @@
 import Input from '../input/input';
 import { getOrder, updateOrder, payBonusOrder, payOrder } from '../../js/api';
 import { getParam } from '../../js/history';
+import dateFormatter from '../../js/dateFormatter';
 import Auth from '../../js/Auth';
 
 const $form = $('#form-order');
@@ -22,7 +23,7 @@ if ($form.length) {
       $('#form-surname').val(profile.surname);
       $('#form-patronymic').val(profile.parentalName);
       $('#form-phone').val(profile.phone).mask('+7 (999) 999-99-99');
-      if (order.inspectionDate) $('#form-date').val(order.inspectionDate.reverse().join('.'));
+      if (order.inspectionDate) $('#form-date').val(dateFormatter(order.inspectionDate));
       if (order.timeBlock) $('#form-time').val(order.timeBlock);
       $('#form-partner').val(order.partnerCode);
       $('#form-comment').val(order.comment);
@@ -70,7 +71,7 @@ if ($form.length) {
         onBlur: saveOrder,
       });
 
-      // const fields = [$sellingPrice, $name, $surname, $patronymic, $date, $time, $comment];
+      const fields = [$sellingPrice, $name, $surname, $patronymic, $date, $time, $comment];
       const $buttons = $('.form__button');
       const $button_pay = $('#form-pay');
       const $button_bonus = $('#form-bonus');
@@ -84,6 +85,10 @@ if ($form.length) {
 
       $button_bonus.on('click', ( e ) => {
         e.preventDefault();
+
+        fields.forEach(field => field.validate());
+        if (fields.some(field => !field.isValid())) return null;
+
         saveOrder()
           .then(() => payBonusOrder(orderId, Auth.token))
           .then(() => window.location.href = $form.attr('action') + '?order=' + orderId);
@@ -93,8 +98,12 @@ if ($form.length) {
       $form.on('submit', ( e ) => {
         e.preventDefault();
 
+        fields.forEach(field => field.validate());
+        if (fields.some(field => !field.isValid())) return null;
+
         const url = `${$form.prop('action')}?order=${orderId}`;
         // const url = `${$form.prop('action')}`;
+
 
         saveOrder()
           .catch(err => {

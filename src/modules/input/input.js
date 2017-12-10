@@ -82,7 +82,7 @@ export default class Input {
   validate() {
     this.dirty = true;
 
-    const val = this.$input.val();
+    const val = this.getValue();
     // console.log(val);
     this.errors = [];
     for (const message in this.validator) {
