@@ -34,6 +34,7 @@ if ($form.length) {
       confirmOrder(orderId, data, Auth.token)
         .then(() => finishLoadDocuments(orderId, Auth.token))
         .then(() => (window.location.href = $form.attr('action')))
+        .catch(({responseJSON}) => $('.docs__error').html(responseJSON.error));
     });
 
     if (Array.isArray(order.attachedFileList)) {
