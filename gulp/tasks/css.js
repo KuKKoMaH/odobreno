@@ -21,6 +21,8 @@ var extensions = {
   fonts:  ['.eot', '.woff', '.woff2']
 };
 
+var spriteName = Math.round(Math.random() * 100000000000) + '.svg';
+
 // stylus.stylus.define('url', stylus.stylus.url({ paths: [__dirname + '/public'] }))
 
 gulp.task('css', function () {
@@ -29,8 +31,8 @@ gulp.task('css', function () {
     sprites({
       stylesheetPath: 'build',
       spritePath:     'build/img',
-      filterBy:       function (info) {
-        return new Promise(function (resolve, reject) {
+      filterBy:       function ( info ) {
+        return new Promise(function ( resolve, reject ) {
           if (info.url.indexOf(path.sep + 'sprite-') !== -1) {
             resolve(info.path);
           } else {
@@ -39,11 +41,16 @@ gulp.task('css', function () {
         });
       },
       hooks:          {
-        onUpdateRule: function (rule, token, image) {
+        onSaveSpritesheet: function ( opts, spritesheet ) {
+          // We assume that the groups is not an empty array
+          var filenameChunks = spritesheet.groups.concat(spritesheet.extension);
+          return path.join(opts.spritePath, spriteName);
+        },
+        onUpdateRule:      function ( rule, token, image ) {
           // Use built-in logic for background-image & background-position
           updateRule(rule, token, image);
 
-          ['width', 'height'].forEach(function (prop) {
+          ['width', 'height'].forEach(function ( prop ) {
             rule.insertAfter(rule.last, decl({
               prop:  prop,
               value: image.coords[prop] + 'px'
@@ -56,7 +63,7 @@ gulp.task('css', function () {
       src:      'src',
       dest:     'build',
       template: 'img/[name].[ext][query]',
-      ignore:   'img/sprite.svg',
+      ignore:   'img/' + spriteName,
     })
   ];
 
